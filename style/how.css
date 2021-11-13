@@ -1,0 +1,8 @@
+.card{
+    display: flex;
+}
+#what{ background-color: beige;
+	border-radius: 20px;
+	box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2);
+    width: 100%;
+}

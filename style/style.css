@@ -1,0 +1,97 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #e7e5e5;
+  }
+  
+  .navbar-default {
+      background-color: #e7e5e5;
+      border-color: #d3d3d3;
+      border-radius: 0;
+  }
+  
+  /*Logo image edits*/
+  .navbar-default .navbar-left img{
+    width: auto;
+    height :60px;
+    padding :0;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin : 0;
+  }
+
+  /*Navigation list font color*/
+  .navbar-default .navbar-nav > li > a {
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+  }
+
+  /*Navigation list hover background color*/
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+      background-color: #d3d3d3;
+  }
+  /*Navigation active tab*/
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus {
+      color: #026C00;
+      background-color: #cecece;
+  }
+
+  /*Text under navbar-default have black color*/
+  .navbar-default .navbar-text {
+      color: rgb(0, 0, 0);
+  }
+
+  .navbar-default .navbar-toggle {
+      border-color:  #e7e5e5;
+  }
+  /*Toggle Navigation list hover background color*/
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+      background-color: #d3d3d3;
+  }
+
+  .navbar-default .navbar-toggle .icon-bar {
+      background-color: rgb(0, 0, 0);
+  }
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {height: 450px; }
+  
+  /* Set gray background color and 100% height */
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+    position: fixed;
+    top: 9%;
+  }
+ .card{margin-left:19%;
+    padding:1px 16px;
+    margin-top:6%;
+    width:80%;
+}
+
+  /*Side navigation links */
+  .sidenav > p > a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      line-height: 2.5;
+      
+  }
+  /*Change text colo when hovering the side navigation*/
+  .sidenav > p > a:hover {
+      color: #88eb86;
+      text-decoration: none;
+  }
+
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height:auto;} 
+  }

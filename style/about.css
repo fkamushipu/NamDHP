@@ -1,0 +1,17 @@
+.card {
+    
+    background-color: aliceblue;
+	margin-bottom:14px;
+	padding:14px;
+	border-radius: 20px;
+	box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2); /* Box gray fade shodow on box sides except top */
+  }
+  .card-body{
+    display: flex;
+    padding: 14px;
+  }
+  .card-header{
+    font-size: 1.17em; 
+    font-weight:bold;
+  }
+  
