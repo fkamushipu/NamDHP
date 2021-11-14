@@ -1,2 +1,2 @@
-# Nam-DHP-version-1
+# Nam-DHP-version-2
 Namibia Digital Health Passport for Covid-19 Vaccine
