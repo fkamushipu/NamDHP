@@ -47,157 +47,157 @@
         </nav>
         <div class="container-fluid">    
           <div class="row content">
-            <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Register or Sign Up</h5>
-                      <p class="card-text">If you already have an existing Nam DHP account, go to log in!
-                        By registering to have a Nam DHP account, 
-                        you will have access to your medical health information related to COVID-19.
-                        If you are vaccinated you will have  your proof of vaccination always accessible to you when it's required or requested.</p>
-                    
-                      <button class="btn btn-primary" id="signup" onclick="document.getElementById('my-form').style.display='block'">Register</button>
-                      <div class="login-modal-div" id="my-form">
-                        <div class="register" >
-                            <span onclick="document.getElementById('my-form').style.display='none'" class="close">&times;</span>
-                        
-                                <h1 class="heading1 text-center">Register</h1>
-                            <div class="card-body">
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" />
+                <div class="col-sm-8">
+                    <div class="card mb-3 cardedit">
+                        <img src="images/sanitize.JPG" class="card-img-top " alt="Covid Image"><br><br>
+                        <div class="card-body">
+                            <h5 class="card-title heading5">Register or Sign Up</h5><br>
+                            <p class="card-text">If you already have an existing Nam DHP account, <a onclick="document.getElementById('login').style.display='block'">go to log in!</a>
+                                By registering to have a Nam DHP account, 
+                                you will have access to your medical health information related to COVID-19.
+                                If you are vaccinated you will have  your proof of vaccination always accessible to you when it's required or requested.</p>
+                                <br>
+                            <button class="btn btn-primary btn-block" id="signup" onclick="document.getElementById('my-form').style.display='block'">Register</button>
+                            <div class="login-modal-div" id="my-form">
+                                <div class="register" >
+                                    <span onclick="document.getElementById('my-form').style.display='none'" class="close">&times;</span>
+                                
+                                        <h1 class="heading1 text-center">Register</h1>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter your last name" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                            <div class="col-md-6">
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="place_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
+                                            <div class="col-md-6">
+                                                <input type="date" id="place_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                                            <select class="col-md-6 form-control" id="gender">
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                            <div class="col-md-6">
+                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="pregnancy_status" class="col-md-4 col-form-label text-md-right">Are You Pregnant?</label>
+                                            <select class="col-md-6 form-control" id="pregnancy_status">
+                                                <optgroup>
+                                                    <option value="true" >Yes</option>
+                                                    <option value="false" >No</option>
+
+                                                </optgroup>
+                                            
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="lactating_status" class="col-md-4 col-form-label text-md-right">Are you breast feeding ?</label>
+                                            <select class="col-md-6 form-control" id="lactating_status" >
+                                                <optgroup><option value="true">Yes</option>
+                                                    <option value="false">No</option></optgroup>
+                                                
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="marital_status" class="col-md-4 col-form-label text-md-right">Marital Status</label>
+                                            <select class="col-md-6 form-control" id="marital_status" >
+                                                <optgroup>
+
+                                            
+                                                <option selected="selected">Select Marital status</option>
+                                                <option value="single">Single</option>
+                                                <option value="married">Married</option>
+                                                <option value="divorced">Divorced</option>
+                                                <option value="widow">Widowed</option>
+                                                <option value="other">Other</option>
+                                            </optgroup>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="guardian_name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="guardian_contact" class="col-md-4 col-form-label text-md-right">Guardian Contactr</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="known_allergies" class="col-md-4 col-form-label text-md-right">Known Allergies </label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <input class="btn btn-success btn-lg btn-block" type="submit" value="Register"  id="save_user">
+                                        </div>
+
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter your last name" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="place_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
-                                    <div class="col-md-6">
-                                        <input type="date" id="place_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
-                                    <select class="col-md-6 form-control" id="gender">
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                    <div class="col-md-6">
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="pregnancy_status" class="col-md-4 col-form-label text-md-right">Are You Pregnant?</label>
-                                    <select class="col-md-6 form-control" id="pregnancy_status">
-                                        <optgroup>
-                                            <option value="true" >Yes</option>
-                                            <option value="false" >No</option>
-
-                                        </optgroup>
-                                    
-                                    </select>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="lactating_status" class="col-md-4 col-form-label text-md-right">Are you breast feeding ?</label>
-                                    <select class="col-md-6 form-control" id="lactating_status" >
-                                        <optgroup><option value="true">Yes</option>
-                                            <option value="false">No</option></optgroup>
-                                        
-                                    </select>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="marital_status" class="col-md-4 col-form-label text-md-right">Marital Status</label>
-                                    <select class="col-md-6 form-control" id="marital_status" >
-                                        <optgroup>
-
-                                    
-                                        <option selected="selected">Select Marital status</option>
-                                        <option value="single">Single</option>
-                                        <option value="married">Married</option>
-                                        <option value="divorced">Divorced</option>
-                                        <option value="widow">Widowed</option>
-                                        <option value="other">Other</option>
-                                    </optgroup>
-                                    </select>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="guardian_name" class="col-md-4 col-form-label text-md-right">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="guardian_contact" class="col-md-4 col-form-label text-md-right">Guardian Contactr</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="known_allergies" class="col-md-4 col-form-label text-md-right">Known Allergies </label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <input class="btn btn-success btn-lg btn-block" type="submit" value="Register"  id="save_user">
-                                </div>
-
                             </div>
                         </div>
                     </div>
-                  </div>
-                    </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     
                   <div class="card mb-3 cardedit">
-                    <img src="images/Covid Info.jpg" class="card-img-top " alt="Covid Image">
+                    <img src="images/Covid Info.jpg" class="card-img-top " alt="Covid Image"><br><br>
                     <div class="card-body">
-                      <h5 class="card-title heading5">Log In</h5>
+                      <h5 class="card-title heading5">Log In</h5><br>
                       <p class="card-text">If you do not already have an existing Nam DHP account, go to Sign Up!</p>
-                      <button class="btn btn-primary" id="signin" onclick="document.getElementById('login').style.display='block'">Log In</button>
+                      <button class="btn btn-primary btn-block" id="signin" onclick="document.getElementById('login').style.display='block'">Log In</button>
                       <div class="login-modal-div " id="login" >
                         <div class="login" >
                             <span onclick="document.getElementById('login').style.display='none'" class="close">&times;</span>
@@ -223,7 +223,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
         </div>
         
