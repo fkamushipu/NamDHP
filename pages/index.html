@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Digital Health Passport">	
+        <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
+        <meta name="author" content="Feni Kamushipu">
+        <title>Nam DHP</title>
+        <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    
+    </head>
+    <body>
+        <nav class= "navbar sticky-top  navbar-default ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                  <a class="navbar-left" href="#"><img src="images/Nam-DHP3.png"></a>
+                </div>
+                <div class="collapse  navbar-collapse" id="topNavigation">
+                    <ul class="nav navbar-nav">
+                        <li><a class="active" href="index.html" >Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how.html">How it works?    </a></li>
+                        <li><a href="register.html">Register / Log In</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="register.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-2 sidenav">
+                    <p><a href="#content">Today In</a></p>
+                    <p><a href="#masks">Masks</a></p>
+                    <p><a href="#nutrition">Nutrition</a></p>
+                    <p><a href="#distancing">Distancing</a></p>
+                </div>
+                <div>
+                    <h3>Today In </h3>
+                    <div id="covid_news_container" class="news container-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <!-- Load our React component. -->
+  <script src="app.js"></script>
+
+    </body>
+</html>

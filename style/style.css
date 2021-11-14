@@ -66,14 +66,14 @@
     padding-top: 20px;
     background-color: #f1f1f1;
     height: 100%;
-    position: fixed;
     top: 9%;
   }
- .card{margin-left:19%;
-    padding:1px 16px;
-    margin-top:6%;
-    width:80%;
+ .cont
+{
+    top:15%;
+    width:100%;
 }
+
 
   /*Side navigation links */
   .sidenav > p > a {
