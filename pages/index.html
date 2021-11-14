@@ -26,18 +26,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                  <a class="navbar-left" href="#"><img src="images/Nam-DHP3.png"></a>
+                    <a class="navbar-left" href="#index.html"><img src="../images/Nam-DHP3.png"></a>
                 </div>
                 <div class="collapse  navbar-collapse" id="topNavigation">
                     <ul class="nav navbar-nav">
                         <li><a class="active" href="index.html" >Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="how.html">How it works?    </a></li>
-                        <li><a href="register.html">Register / Log In</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="profile.html">Profile</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="register.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
+                        <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                      </ul>
                 </div>
             </div>
         </nav>
@@ -63,6 +64,11 @@
 
   <!-- Load our React component. -->
   <script src="app.js"></script>
+  <script type="text/javascript">
+    function logout(){
+     window.location = "../register.html";
+    }
+  </script> 
 
     </body>
 </html>

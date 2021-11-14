@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Digital Health Passport">	
+        <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
+        <meta name="author" content="Feni Kamushipu">
+        <title>Nam DHP</title>
+        <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- Vendor CSS-->
+        <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+        <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/index.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    
+    </head>
+    <body>
+        <nav class= "navbar navbar-fixed-top  navbar-default ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-left" href="#index.html"><img src="../images/Nam-DHP3.png"></a>
+                </div>
+                <div class="collapse  navbar-collapse" id="topNavigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how.html">How it works?    </a></li>
+                        <li><a class="active" href="booking.html">Booking</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                      </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">    
+          <div class="row content">
+            <div class="card-header"> Booking</div>
+            <div class="card-body">
+                <div class="form-group row">
+                    <label for="appointment_id" class="col-md-4 col-form-label text-md-right">Enter Your Reason For Booking"</label>
+                    <textarea class="col-md-6" name="appointment_id" id="appointment_id" placeholder="Enter Your Reason For Booking" cols="30" rows="5"></textarea>
+                    
+                </div>
+
+                <div class="col-md-6 offset-md-4">
+                    <input type="submit" value="Send"  id="sent_appointment">
+                </div>
+                </div>
+            </div>
+          </div>  
+        </div>
+        
+
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript">
+        var user = null;
+        window.onload = function(){
+               user = JSON.parse(sessionStorage.user_details)
+              console.log(user)
+           
+           }
+      
+      
+          $("#sent_appointment").click(function(){
+               
+              var appointment = new Object();
+              appointment.user_id = user.id;
+              appointment.reason = $("#appointment_id").val();
+              appointment.email = user.email;
+              
+                
+                 $.ajax({
+                     url: "http://localhost:6503/api/appointments",
+                     method: 'POST',
+                     dataType: 'json',
+                     data: appointment,
+      
+                     success: function(data){
+                         console.log(data)
+                         swal.fire({
+                          title: "Booking Successfully send",
+                      })
+                     
+                    
+      
+                     },
+                     error: function (request, status, error) {
+                      console.log(request.responseText);
+                      console.log("there is a problem");
+                      }
+                  
+                 })
+      
+          })
+         function logout(){
+             window.location = "register.html";
+         }
+      </script>
+
+    </body>
+    
+</html>
