@@ -23,3 +23,44 @@
   .login-modal-div{
     display: none;
 }
+
+.register{
+	padding-left:14px;
+  width: 50%;
+  box-shadow: 9px 9px 9px 0 rgba(0, 0, 0, 0.3);
+	margin: 100px auto;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 30%;
+	right : 50%;
+  background-color: #DCDCDC	;
+	line-height: normal;
+}
+/*
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #C4C4C4 !important;
+  color: #026C00 !important;	
+}*/
+
+/*Login Form style */
+.login {
+  background-color: #DCDCDC	;
+	 text-align: center;
+  	width: 40%;
+  	box-shadow: 9px 9px 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+    z-index: 10;
+    top: 0;
+    left: 35%;
+    right : 50%;
+	  overflow: auto;
+    padding:14px;
+}
+.heading1{
+  	color: #660740;
+  	font-size: 24px;
+  	padding: 20px 0 20px 0;
+  	border-bottom: 1px solid #dee0e4;
+    font-weight: bold;
+}

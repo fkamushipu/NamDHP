@@ -1,11 +1,25 @@
+.container{
+  display: grid;
+  height:100vh;
+  grid-template-rows: .4fr 1fr;
+  grid-template-areas: " nav" 
+  "content-container"
+  ;
+}
+.container-fluid{
+  grid-area: content-container !important;
+  
+}
 
 /* Remove the navbar's default margin-bottom and rounded borders */ 
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
     background-color: #e7e5e5;
+    grid-area: nav !important;
+    
   }
-  
+    
   .navbar-default {
       background-color: #e7e5e5;
       border-color: #d3d3d3;
@@ -59,22 +73,33 @@
       background-color: rgb(0, 0, 0);
   }
   /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-  .row.content {height: 450px; }
-  
+
+  .row.content { height: 500px;
+  }
   /* Set gray background color and 100% height */
-  .sidenav {
+  .sidenav  {
     padding-top: 20px;
     background-color: #f1f1f1;
     height: 100%;
-    top: 9%;
+    left: 0;
+    width: 20%;
+   
   }
- .cont
-{
-    top:15%;
-    width:100%;
-}
 
-
+    .close {
+        color: rgb(255, 0, 0);
+        float: right;
+        font-size: 40px;
+        font-weight: bold;
+        top: 0 ;
+      }
+      .close:hover,
+    .close:focus {
+        background-color: #000000;
+      color: rgb(255, 0, 0);
+      text-decoration: none;
+      cursor: pointer;
+    }
   /*Side navigation links */
   .sidenav > p > a {
       color: rgb(0, 0, 0);
@@ -82,12 +107,19 @@
       line-height: 2.5;
       
   }
+  .heading5{
+    font-weight: bold;
+    text-align: center;
+  }
   /*Change text colo when hovering the side navigation*/
   .sidenav > p > a:hover {
       color: #88eb86;
       text-decoration: none;
   }
-
+  .cardedit{
+    box-shadow: 9px 9px 9px 0 rgba(0, 0, 0, 0.3);
+  }
+ 
   /* On small screens, set height to 'auto' for sidenav and grid */
   @media screen and (max-width: 767px) {
     .sidenav {
