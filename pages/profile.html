@@ -11,52 +11,131 @@
         <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="../style/style.css">
-        <link rel="stylesheet" href="../style/index.css">
+        <link rel="stylesheet" href="../style/profile.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         
     
     </head>
     <body>
-        <nav class= "navbar sticky-top  navbar-default ">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-left" href="#index.html"><img src="../images/Nam-DHP3.png"></a>
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="../images/profile avatar.jpg" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4><span id="name"></span></h4>
+                      <p class="text-secondary mb-1">Vaccinated: <span id="vaccinated"></span></p>
+                      <button class="btn btn-outline-primary btn-block">Logout</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="collapse  navbar-collapse" id="topNavigation">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html" >Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="how.html">How it works?    </a></li>
-                        <li><a href="booking.html">Booking</a></li>
-                        <li><a class="active" href="profile.html">Profile</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                      </ul>
-                </div>
+              </div>
+              <div class="card mt-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
+                    <span class="text-secondary">https://bootdey.com</span>
+                  </li>
+                 
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>Facebook</h6>
+                    <span class="text-secondary">bootdey</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </nav>
-        <div class="container-fluid">
-            <div class="row content">
-                <div class="col-sm-2 sidenav">
-                    <p><a href="#content">Today In</a></p>
-                    <p><a href="#masks">Masks</a></p>
-                    <p><a href="#nutrition">Nutrition</a></p>
-                    <p><a href="#distancing">Distancing</a></p>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">First Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <span id="name"></span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <span id="last_name"></span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <span id="email"></span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        <span id="cellphone"></span>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " onclick="document.getElementById('qr-api').style.display='block'">Generate QR</a>
+
+                    </div>
+                  </div>
+                  <br>
+                  <hr>
+                  <br>
+                  <div class="row" style="display: none;" > 
+                    <ul class="qr-info" >
+                        <p class="qr-data"> <span id="qr-name"></span> <span id="qr-last-name"></span> 
+                            <br>
+                        Vaccinated : <span id="qr-vaccinated"></span></p>
+                    </ul>
                 </div>
-                <div>
-                    <h3>Today In </h3>
-                    <div id="covid_news_container" class="news container-fluid">
+                  <div class="row" style="display: none;" id="qr-api"> 
+                    <div class="col-sm-12 qr-img">
+                        
                     </div>
                 </div>
+              </div>
+
+              <div class="row gutters-sm">
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                      <small>Web Design</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
+                      <small>Web Design</small>
+                      <div class="progress mb-3" style="height: 5px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+    </div>
         <!-- Load React. -->
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
@@ -66,9 +145,33 @@
   <script src="app.js"></script>
 
   <script type="text/javascript">
+  window.onload = function(){
+        var user = JSON.parse(sessionStorage.user_details)
+        console.log(user)
+        $("#name").html(user.name)
+        $("#qr-name").html(user.name)
+        $("#last_name").html(user.last_name)
+        $("#qr-last-name").html(user.last_name)
+        $("#qr-vaccinated").html(user.vaccinated)
+        $("#email").html(user.email)
+        $("#cellphone").html(user.cellphone)
+
+     }
+
     function logout(){
      window.location = "../register.html";
     }
+    let span = document.querySelector(".qr-info");
+    let button = document.querySelector(".btn btn-info");
+    let qrimg =document.querySelector(".qr-img qr");
+
+    button.addEventListener("click", function(){
+        let data = span.value;
+        if(data.length > 0){
+            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
+    qrImg.src = imgSrc;
+        }
+    })
   </script> 
 
     </body>

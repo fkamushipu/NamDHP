@@ -15,7 +15,8 @@
         <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
         <link rel="stylesheet" href="../style/style.css">
-        <link rel="stylesheet" href="../style/index.css">
+        <link rel="stylesheet" href="../style/booking.css">
+        <link rel="stylesheet" href="../style/register.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -23,7 +24,7 @@
     
     </head>
     <body>
-        <nav class= "navbar navbar-fixed-top  navbar-default ">
+        <nav class= "navbar  navbar-default ">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
@@ -48,22 +49,23 @@
             </div>
         </nav>
         <div class="container-fluid">    
-          <div class="row content">
-            <div class="card-header"> Booking</div>
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="appointment_id" class="col-md-4 col-form-label text-md-right">Enter Your Reason For Booking"</label>
-                    <textarea class="col-md-6" name="appointment_id" id="appointment_id" placeholder="Enter Your Reason For Booking" cols="30" rows="5"></textarea>
-                    
-                </div>
+          <div class="row content ">
+              <div class="booking">
+                <div class="card-header heading1 text-center"> Booking</div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="appointment_id" class="col-md-4 col-form-label text-md-right">Enter Your Reason For Booking"</label>
+                        <textarea class="col-md-6" name="appointment_id" id="appointment_id" placeholder="Enter Your Reason For Booking" cols="30" rows="5"></textarea>
+                        
+                    </div>
 
-                <div class="col-md-6 offset-md-4">
-                    <input type="submit" value="Send"  id="sent_appointment">
-                </div>
+                    <div class="col-md-6 offset-md-4">
+                        <input type="submit" class="btn btn-primary btn-block " value="Send"  id="sent_appointment">
+                    </div>
                 </div>
             </div>
-          </div>  
-        </div>
+           </div>
+        </div>  
         
 
     <script src="vendor/select2/select2.min.js"></script>
