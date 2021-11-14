@@ -1,6 +1,7 @@
 .card{
     display: flex;
     border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2);
 }
 .card-header{
     flex:1;

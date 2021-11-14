@@ -1,0 +1,9 @@
+.my-form{
+    display: none;
+    width:100%;
+}
+.row{
+    display: flex;
+    padding:1px 16px;
+    margin-top:6%;
+  }
