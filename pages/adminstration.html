@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Digital Health Passport">	
+        <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
+        <meta name="author" content="Feni Kamushipu">
+        <title>Nam DHP</title>
+        <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/profile.css">
+        <link rel="stylesheet" href="../style/register.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    
+    </head>
+    <body>
+      <div class="container">
+        <div class="main-body">
+          
+          <div class="container-fluid">
+            <div class="row content">
+              <div class="col-sm-9">
+                <div class="card mb-3">
+                  <h6 class="heading1">Add User Vaccination details</h6>
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="username" class="col-md-4 col-form-label text-md-right"> Patient Username</label>
+                      <div class="col-md-6">
+                          <input type="text" id="username" class="form-control" name="username" placeholder="Enter  patient's username" />
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right"> Patient First name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Enter patient'First name" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="last_name" class="col-md-4 col-form-label text-md-right"> Patient name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter patient's last name" />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="vaccinated" class="col-md-4 col-form-label text-md-right">Is the patient vaccinated ?</label>
+                    <select class="col-md-6 form-control" id="vaccinated">
+                        <optgroup>
+                            <option value="true" >Yes</option>
+                            <option value="false" >No</option>
+
+                        </optgroup>
+                    
+                    </select>
+                </div>
+                  <div class="form-group row">
+                    <label for="vaccine_type" class="col-md-4 col-form-label text-md-right">COVID-19 Vaccine Type</label>
+                    <select class="col-md-6 form-control" id="vaccine_type" >
+                        <optgroup>
+
+                    
+                        <option selected="selected">Select Vaccine Type</option>
+                        <option value="Sinopharm">Sinopharm</option>
+                        <option value="AstraZeneca">Oxford-AstraZeneca, Sputnik V (Gamaleya Research Institute)</option>
+                        <option value="Novavax">Novavax</option>
+                        <option value="Moderna">Pfizer-BioNTech, Moderna</option>
+                        <option value="other">Other</option>
+                    </optgroup>
+                    </select>
+                </div>
+                  <div class="form-group row">
+                    <input class="btn btn-success btn-lg btn-block" type="submit" value="Update Patient data"  id="save_user">
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+  <!-- Load our React component. -->
+  <script src="app.js"></script>
+
+  <script type="text/javascript">
+    var user = null;
+  window.onload = function(){
+         user = JSON.parse(sessionStorage.user_details)
+        console.log(user)
+        $("#name").html(user.name)
+        $("#qr-name").html(user.name)
+        $("#last_name").html(user.last_name)
+        $("#qr-last-name").html(user.last_name)
+        $("#qr-vaccinated").html(user.vaccinated)
+        $("#email").html(user.email)
+        $("#cellphone").html(user.cellphone)
+        $('#profile-last-name').html(user.last_name)
+        $('#profile-name').html(user.name)
+        $('#profile-vaccinated').html(user.vaccinated)
+     }
+
+     $("#sent_appointment").click(function(){
+               
+        var appointment = new Object();
+        appointment.user_id = user.id;
+        appointment.reason = $("#appointment_reason").val();
+        appointment.email = user.email;
+
+          $.ajax({
+              url: "http://localhost:6503/api/appointments",
+              method: 'POST',
+              dataType: 'json',
+              data: appointment,
+
+              success: function(data){
+                  console.log(data)
+                  swal.fire({
+                    title: "Booking Successfully send",
+                })
+              },
+              error: function (request, status, error) {
+                console.log(request.responseText);
+                console.log("there is a problem");
+                }
+          })
+
+    })
+
+    function logout(){
+      sessionStorage.clear()
+     window.location = "../register.html";
+    }
+  /*   var person  = 
+    {
+        "name": null,
+        "last_name": null,
+        "vaccinated":null
+
+    }; */
+
+
+    //QR Code javascript
+    // var person  = new Object();
+
+   
+
+   // var  input =  person;   //document.querySelector(".form input"); 
+    let button = document.querySelector(".form button");
+    let qrImg = document.querySelector(".qr-img img");
+
+    button.addEventListener("click",function(){
+     // person.name = user.name;
+    //  person.last_name = user.last_name;
+     // person.vaccinated = user.vaccinated;
+     
+      
+     // console.log(person)
+      let data =  "Name: "+ user.name + "\n" + " Last Name: "+  user.last_name + "\n"+ " Vaccinated: "+ user.vaccinated  ;
+      console.log(data)
+      if(data !== null){
+        let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
+        qrImg.src = imgSrc;
+      }
+    })
+    /* let span = document.querySelector(".qr-info");
+    let button = document.querySelector("button");
+    let qrimg =document.querySelector(".qr-img qr");
+
+    button.addEventListener("click", function(){
+        let data = span.value;
+        if(data.length > 0){
+            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+data;
+    qrImg.src = imgSrc;
+        }
+    }) */
+    
+  </script> 
+
+
+    </body>
+</html>

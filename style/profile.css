@@ -22,17 +22,39 @@ body{
     padding: 1rem;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.qr-img{
-    margin-top: 10px;
-}
-.qr-img img{
+* {
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+  }
+  body {
+    font-family:sans-serif;
+  }
+  .center {
+    width:200px;
+    padding:20px;
+    border-radius:10px;
+  }
+  .form .form-element {
+    margin-bottom:15px;
+  }
+  .form .form-element label {
+    font-size:14px;
+    color:#111;
+  }
+  .form .form-element input {
     width:100%;
-}
+    display:block;
+    padding:10px;
+    margin-top:5px;
+  }
+  .qr-img {
+    margin-top:10px;
+  }
+  .qr-img img {
+    width:100%;
+  }
+
 .booking{
     
     background-color: #f1f0f0	;

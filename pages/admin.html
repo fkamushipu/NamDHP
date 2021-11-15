@@ -36,11 +36,12 @@
                 </div>
                 <div class="collapse  navbar-collapse" id="topNavigation">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html" >Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="how.html">How it works?    </a></li>
-                        <li><a class="active" href="booking.html">Booking</a></li>
-                        <li><a href="profile.html">Profile</a></li>
+                        <ul class="nav navbar-nav">
+                            <li><a  href="../index.html" >Home</a></li>
+                            <li><a href="../about.html">About Us</a></li>
+                            <li><a href="../how.html">How it works?    </a></li>
+                            <li><a href="../register.html">Register / Log In</a></li>
+                        </ul>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -50,20 +51,23 @@
         </nav>
         <div class="container-fluid">    
           <div class="row content ">
-              <div class="booking">
-                <div class="card-header heading1 text-center"> Booking</div>
-                <div class="card-body">
+                <div class="login" >
+                    <div class="card-header heading1 text-center">Admin Log in </div>
                     <div class="form-group row">
-                        <label for="appointment_id" class="col-md-4 col-form-label text-md-right">Enter Your Reason For Booking"</label>
-                        <textarea class="col-md-6" name="appointment_id" id="appointment_id" placeholder="Enter Your Reason For Booking" cols="30" rows="5"></textarea>
-                        
+                        <label for="username" class=" col-form-label text-md-right"> <i class="fas fa-user"></i> </label>
+                        <div class="col-md-6">
+                            <input type="text" name="username" placeholder="Username" id="sign_in_username" required />
+                        </div>
                     </div>
-
-                    <div class="col-md-6 offset-md-4">
-                        <input type="submit" class="btn btn-primary btn-block " value="Send"  id="sent_appointment">
+                    <div class="form-group row">
+                        <label for="password" class=" col-form-label text-md-right"> <i class="fas fa-lock"></i></label>
+                        <div class="col-md-6">
+                            <input type="password" name="password" placeholder="Password" id="sign_in_password" required />
+                        </div>
                     </div>
+                    <input class="btn btn-success btn-lg btn-block" type="submit" value="Login" id="admin_sign_in">
+                    
                 </div>
-            </div>
            </div>
         </div>  
         
@@ -79,48 +83,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
     <script type="text/javascript">
-        var user = null;
-        window.onload = function(){
-               user = JSON.parse(sessionStorage.user_details)
-              console.log(user)
-           
-           }
-      
-      
-          $("#sent_appointment").click(function(){
-               
-              var appointment = new Object();
-              appointment.user_id = user.id;
-              appointment.reason = $("#appointment_id").val();
-              appointment.email = user.email;
-              
-                
-                 $.ajax({
-                     url: "http://localhost:6503/api/appointments",
-                     method: 'POST',
-                     dataType: 'json',
-                     data: appointment,
-      
-                     success: function(data){
-                         console.log(data)
-                         swal.fire({
-                          title: "Booking Successfully send",
-                      })
-                     
-                    
-      
-                     },
-                     error: function (request, status, error) {
-                      console.log(request.responseText);
-                      console.log("there is a problem");
-                      }
-                  
-                 })
-      
-          })
-         function logout(){
-             window.location = "register.html";
-         }
+        $("#sign_in").click(function(){
+        $.ajax({
+        url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
+        method: 'POST',
+        dataType: 'json',
+
+        success: function(data){
+        // 
+        //console.log(data)
+        
+        if (data != undefined) {
+            console.log(data)
+            sessionStorage.setItem('user_details', JSON.stringify(data));
+            window.location = "adminstration.html" 
+        }else{
+            swal.fire({
+            title: "Wrong Password or username"
+        })
+        }
+        },
+        error: function (request, status, error) {
+        // console.log(request.responseText);
+        //console.log("there is a problem");
+        
+        }
+    
+    })
+
+})
       </script>
 
     </body>

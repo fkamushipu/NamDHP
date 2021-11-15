@@ -34,13 +34,13 @@
                 </div>
                 <div class="collapse  navbar-collapse" id="topNavigation">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.html" >Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="how.html">How it works?    </a></li>
+                        <li><a href="../index.html" >Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../how.html">How it works?    </a></li>
                         <li class="active"><a href="register.html">Register / Log In</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                      <li><a href="register.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a href="pages/admin.html"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -238,37 +238,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
     <script type="text/javascript">
-    $("#sign_in").click(function(){
-
     
-$.ajax({
-              url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
-              method: 'POST',
-              dataType: 'json',
+    $("#sign_in").click(function(){
+    $.ajax({
+        url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
+        method: 'POST',
+        dataType: 'json',
 
-              success: function(data){
-                // 
-                //console.log(data)
-             
-                if (data != undefined) {
-                    console.log(data)
-                   sessionStorage.setItem('user_details', JSON.stringify(data));
-                   window.location = "pages/profile.html" 
-                }else{
-                   swal.fire({
-                   title: "Wrong Password or username"
-               })
-                }
-              },
-              error: function (request, status, error) {
-              // console.log(request.responseText);
-               //console.log("there is a problem");
-             
-               }
-           
-          })
+        success: function(data){
+        // 
+        //console.log(data)
+        
+        if (data != undefined) {
+            console.log(data)
+            sessionStorage.setItem('user_details', JSON.stringify(data));
+            window.location = "pages/profile.html" 
+        }else{
+            swal.fire({
+            title: "Wrong Password or username"
+        })
+        }
+        },
+        error: function (request, status, error) {
+        // console.log(request.responseText);
+        //console.log("there is a problem");
+        
+        }
+    
+    })
 
-       })
+})
 
 //User registration
    $("#save_user").click(function(){

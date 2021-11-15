@@ -126,25 +126,38 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                        <a class="btn btn-info " onclick="document.getElementById('qr-api').style.display='block'">Generate QR</a>
-
+                        <!-- <a class="btn btn-info " id="button"  onclick="document.getElementById('qr_code').style.display='block'">Generate QR</a>-->
+                        <div class="center">
+                          <div class="form">
+                            <div class="form-element">
+                              <label for="data-ip">Enter data</label>
+                              <input type="text" id="data-ip">
+                            </div>
+                            <div class="form-element">
+                              <button>Generate QR Code</button>
+                            </div>
+                          </div>
+                          <div class="qr-img">
+                            <img src="">
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <br>
                     <hr>
                     <br>
-                    <div class="row" style="display: none;" > 
+                    <!--
+                    <div class="row" style="display: none;" id="qr_code" > 
                       <ul class="qr-info" >
                           <p class="qr-data"> <span id="qr-name"></span> <span id="qr-last-name"></span> 
                               <br>
                           Vaccinated : <span id="qr-vaccinated"></span></p>
                       </ul>
-                  </div>
-                    <div class="row" style="display: none;" id="qr-api"> 
                       <div class="col-sm-12 qr-img">
-                          
+                          <span id="qr"></span>
                       </div>
                   </div>
+                  -->
                 </div>
 
                 <div class="row gutters-sm">
@@ -181,14 +194,19 @@
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
   <!-- Load our React component. -->
   <script src="app.js"></script>
 
   <script type="text/javascript">
-
+    var user = null;
   window.onload = function(){
-        var user = JSON.parse(sessionStorage.user_details)
+         user = JSON.parse(sessionStorage.user_details)
         console.log(user)
         $("#name").html(user.name)
         $("#qr-name").html(user.name)
@@ -230,24 +248,55 @@
     })
 
     function logout(){
+      sessionStorage.clear()
      window.location = "../register.html";
     }
-    let span = document.querySelector(".qr-info");
-    let button = document.querySelector(".btn btn-info");
+  /*   var person  = 
+    {
+        "name": null,
+        "last_name": null,
+        "vaccinated":null
+
+    }; */
+
+
+    //QR Code javascript
+    // var person  = new Object();
+
+   
+
+   // var  input =  person;   //document.querySelector(".form input"); 
+    let button = document.querySelector(".form button");
+    let qrImg = document.querySelector(".qr-img img");
+
+    button.addEventListener("click",function(){
+     // person.name = user.name;
+    //  person.last_name = user.last_name;
+     // person.vaccinated = user.vaccinated;
+     
+      
+     // console.log(person)
+      let data =  "Name: "+ user.name + "\n" + " Last Name: "+  user.last_name + "\n"+ " Vaccinated: "+ user.vaccinated  ;
+      console.log(data)
+      if(data !== null){
+        let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
+        qrImg.src = imgSrc;
+      }
+    })
+    /* let span = document.querySelector(".qr-info");
+    let button = document.querySelector("button");
     let qrimg =document.querySelector(".qr-img qr");
 
     button.addEventListener("click", function(){
         let data = span.value;
         if(data.length > 0){
-            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
+            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+data;
     qrImg.src = imgSrc;
         }
-    })
+    }) */
     
   </script> 
-   <script type="text/javascript">
-   
-  </script>
+
 
     </body>
 </html>
