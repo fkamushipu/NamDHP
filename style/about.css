@@ -1,17 +1,26 @@
-.card {
-    
-    background-color: aliceblue;
-	margin-bottom:14px;
-	padding:14px;
-	border-radius: 20px;
-	box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2); /* Box gray fade shodow on box sides except top */
+  /*card design*/
+  .card {
+
+  background-color: #fffefd;
+  margin-bottom:14px;
+  padding:14px;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px #ffe7a4; /* Box yellow fade shodow on box sides except top */
   }
+
+  /*Flex elements inside the card body*/
   .card-body{
-    display: flex;
-    padding: 14px;
+  display: flex;
+  padding: 14px;
   }
+
+  /*Card Heading*/
   .card-header{
-    font-size: 1.17em; 
-    font-weight:bold;
+  font-size: 1.17em; 
+  font-weight:bold;
   }
-  
+
+  /*horizontal line color*/
+  hr{
+  border-bottom: 1px solid #ffa6a6;
+  }

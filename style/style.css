@@ -1,32 +1,19 @@
-.container{
-  display: grid;
-  height:100vh;
-  grid-template-rows: .4fr 1fr;
-  grid-template-areas: " nav" 
-  "content-container"
-  ;
-}
-.container-fluid{
+  /*Overwrite the bootstrap grid area for container-fluid class */
+  .container-fluid{
   grid-area: content-container !important;
-  
-}
 
-/* Remove the navbar's default margin-bottom and rounded borders */ 
-.navbar {
+  }
+
+  /* Remove the navbar's default margin-bottom and rounded borders */ 
+  .navbar {
     margin-bottom: 0;
     border-radius: 0;
     background-color: #e7e5e5;
     grid-area: nav !important;
     
   }
-    
-  .navbar-default {
-      background-color: #e7e5e5;
-      border-color: #d3d3d3;
-      border-radius: 0;
-  }
-  
-  /*Logo image edits*/
+
+  /*Logo image resize*/
   .navbar-default .navbar-left img{
     width: auto;
     height :60px;
@@ -36,33 +23,34 @@
     margin : 0;
   }
 
-  /*Navigation list font color*/
+  /*Navigation list font color and weight*/
   .navbar-default .navbar-nav > li > a {
       color: rgb(0, 0, 0);
       font-weight: bold;
   }
 
-  /*Navigation list hover background color*/
+  /* Top Navigation list hover, background color*/
   .navbar-default .navbar-nav > li > a:hover,
   .navbar-default .navbar-nav > li > a:focus {
       background-color: #d3d3d3;
   }
-  /*Navigation active tab*/
+
+  /*Top Navigation active tab*/
   .navbar-default .navbar-nav > .active > a,
   .navbar-default .navbar-nav > .active > a:hover,
   .navbar-default .navbar-nav > .active > a:focus {
       color: #026C00;
-      background-color: #cecece;
   }
 
-  /*Text under navbar-default have black color*/
+  /* [--Text under navbar-default have black color --]*/
   .navbar-default .navbar-text {
       color: rgb(0, 0, 0);
   }
 
   .navbar-default .navbar-toggle {
-      border-color:  #e7e5e5;
+      border-color:  #ffbb00;
   }
+
   /*Toggle Navigation list hover background color*/
   .navbar-default .navbar-toggle:hover,
   .navbar-default .navbar-toggle:focus {
@@ -72,10 +60,11 @@
   .navbar-default .navbar-toggle .icon-bar {
       background-color: rgb(0, 0, 0);
   }
-  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
   .row.content { height: 500px;
   }
+  
   /* Set gray background color and 100% height */
   .sidenav  {
     padding-top: 20px;
@@ -83,23 +72,24 @@
     height: 100%;
     left: 0;
     width: 20%;
-   
+    
+  }
+  /*Close modal x cross, hover and focus  */
+  .close {
+      color: rgb(255, 0, 0);
+      float: right;
+      font-size: 50px;
+      font-weight: bold;
+      top: 0 ;
+    }
+    .close:hover,
+  .close:focus {
+    background-color: #000000;
+    color: rgb(255, 0, 0);
+    text-decoration: none;
+    cursor: pointer;
   }
 
-    .close {
-        color: rgb(255, 0, 0);
-        float: right;
-        font-size: 40px;
-        font-weight: bold;
-        top: 0 ;
-      }
-      .close:hover,
-    .close:focus {
-        background-color: #000000;
-      color: rgb(255, 0, 0);
-      text-decoration: none;
-      cursor: pointer;
-    }
   /*Side navigation links */
   .sidenav > p > a {
       color: rgb(0, 0, 0);
@@ -108,36 +98,42 @@
       
   }
 
+  /*heading 1 for h1 tag */
   .heading1{
-  	color: #660740;
-  	font-size: 24px;
-  	padding: 20px 0 20px 0;
-  	border-bottom: 1px solid #dee0e4;
-    font-weight: bold;
-    text-align: center;
-}
+  color: #660740;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #ffc0c0;
+  font-weight: bold;
+  text-align: center;
+  }
+
+  /*heading 1 for h1 tag */
   .heading5{
-    font-weight: bold;
-    text-align: center;
-    font-size: 24px;
-    border-bottom: 1px solid #dee0e4;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  border-bottom: 1px solid#ffc0c0;
   }
-  /*Change text colo when hovering the side navigation*/
+
+  /*Change text color when hovering the side navigation*/
   .sidenav > p > a:hover {
-      color: #88eb86;
-      text-decoration: none;
+    color: #88eb86;
+    text-decoration: none;
   }
+
+  /*Box card shadow and round corners*/
   .cardedit{
-    box-shadow: 9px 9px 9px 0 rgba(0, 0, 0, 0.3);
-    padding :14px;
-    border-radius: 20px;
+  box-shadow: 9px 9px 9px 0 rgba(0, 0, 0, 0.3);
+  padding :14px;
+  border-radius: 20px;
   }
- 
+
   /* On small screens, set height to 'auto' for sidenav and grid */
   @media screen and (max-width: 767px) {
-    .sidenav {
-      height: auto;
-      padding: 15px;
-    }
-    .row.content {height:auto;} 
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
   }
