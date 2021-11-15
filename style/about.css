@@ -1,11 +1,11 @@
   /*card design*/
   .card {
-  background-color: #fffefd;
-  margin-bottom:14px;
-  padding:14px;
-  border-radius: 20px;
-  box-shadow: 0 10px 10px #ffe7a4; /* Box yellow fade shodow on box sides except top */
-  }
+    background-color: #fffefd;
+    margin-bottom:14px;
+    padding:14px;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px #ffe7a4; /* Box yellow fade shodow on box sides except top */
+    }
 
   /*Flex elements inside the card body*/
   .card-body{

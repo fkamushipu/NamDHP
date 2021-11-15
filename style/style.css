@@ -1,3 +1,8 @@
+/*Apply this font size to text if it's not specified*/
+  body{
+    font-size:17px;
+  }
+  
   /*Overwrite the bootstrap grid area for container-fluid class */
   .container-fluid{
   grid-area: content-container !important;
@@ -96,25 +101,37 @@
       text-decoration: none;
       line-height: 2.5;
       
+    }
+  /*[--<= Manipulated Headings  Start   =>-- ] */
+    .heading1{
+    color: #660740;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #ffc0c0;
+    font-weight: bold;
+    text-align: center;
+    }
+
+  
+    .heading5{
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    
+    background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
   }
 
-  /*heading 1 for h1 tag */
-  .heading1{
-  color: #660740;
-  font-size: 24px;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid #ffc0c0;
-  font-weight: bold;
-  text-align: center;
+  .heading6{
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+    background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
   }
-
-  /*heading 1 for h1 tag */
-  .heading5{
-  font-weight: bold;
-  text-align: center;
-  font-size: 24px;
-  border-bottom: 1px solid#ffc0c0;
-  }
+  /*[--<= Manipulated Headings End   =>-- ] */
 
   /*Change text color when hovering the side navigation*/
   .sidenav > p > a:hover {
@@ -124,10 +141,12 @@
 
   /*Box card shadow and round corners*/
   .cardedit{
+    margin-top: 20px;
   box-shadow: 0 10px 10px #ffe7a4; 
   padding :14px;
   border-radius: 20px;
   }
+  
 
   /* On small screens, set height to 'auto' for sidenav and grid */
   @media screen and (max-width: 767px) {

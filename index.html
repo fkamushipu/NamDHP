@@ -8,18 +8,29 @@
         <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
         <meta name="author" content="Feni Kamushipu">
         <title>Nam DHP</title>
+        <!--Logo -->
         <link rel="icon" href="images/DHP Done.png" type="image/x-icon">
+
+        <!--Bootstrap style link-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style/style.css">
+        
+        <link rel="stylesheet" href="style/style.css"><!--Default css-->
         <link rel="stylesheet" href="style/index.css">
+
+        <!--Ajax  news api script  -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!--Bootstrap script-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         
     
     </head>
     <body>
-        <nav class= "navbar   navbar-default ">
+        <!--Top Navigation -->
+        <nav class= "navbar   navbar-default " id="top">
             <div class="container-fluid">
+
+                <!--Top Navigation on toggle -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
                         <span class="icon-bar"></span>
@@ -28,6 +39,7 @@
                     </button>
                   <a class="navbar-left" href="#"><img src="images/Nam-DHP3.png"></a>
                 </div>
+                <!--Top Navigation lists of links -->
                 <div class="collapse  navbar-collapse" id="topNavigation">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html" >Home</a></li>
@@ -43,26 +55,77 @@
         </nav>
         <div class="container-fluid ">
             <div class="row content ">
+                <!--Side Navigation -->
                 <div class="col-sm-2 sidenav">
-                    <p><a href="#content">Today In</a></p>
+                    <p><a href="#top">COVID-19 Updates</a></p>
                     <p><a href="#masks">Masks</a></p>
                     <p><a href="#nutrition">Nutrition</a></p>
                     <p><a href="#distancing">Distancing</a></p>
                 </div>
-                <div >
-                    <h3 class="text-center">Today In </h3> <hr>
+
+                <!--Content -->
+                <div class="col-sm-9">
+                    <h5 class="heading5">COVID-19 Updates </h5> <hr>
+
+                    <!--React Component-->
                     <div id="covid_news_container" class="news container-fluid">
                     </div>
+
+                    <!--Masks Card-->
+                    <div class="card cardedit" id="masks">
+                        <div class="card-header text-center heading6">
+                            Masks
+                        </div>
+                        <hr>
+                        <div class="card-body ">
+                            <ul>
+                                <li class="list-item">Do not hang your masks around the neck as germs can easily reach your mouth and nose.</li>
+                                <li class="list-item">Do not share masks.</li>
+                                <li class="list-item">Replace the masks with a new one as soon as it is damp or dirty and do not re-use single use masks</li>
+                                <li class="list-item">Cover your mouth and nose with the mask and make sure there are no gaps  between your face and the mask.</li>
+                            </ul>
+                        </div>
+                    </div> 
+
+                    <!--Nutrition Card-->
+                    <div class="card cardedit" id="nutrition">
+                        <div class="card-header text-center heading6">
+                            Nutrition
+                        </div>
+                        <hr>
+                        <div class="card-body ">
+                            <ul>
+                                <li class="list-item">Consume clean and safe water and food.</li>
+                                <li class="list-item">Wash your hand with soap and running water before eating.</li>
+                                <li class="list-item">Care and support for those who don’t have food and look after elderly and young mothers.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Distancing Card-->
+                    <div class="card cardedit" id="distancing">
+                        <div class="card-header text-center heading6">
+                            Distancing
+                        </div>
+                        <hr>
+                        <div class="card-body ">
+                            <ul>
+                                <li class="list-item">Practice Social distancing when in public by :
+                                    Keeping 1-meter distance or more from another person should be strictly adhered to in all public spaces.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>  
                 </div>
             </div>
         </div>
-        <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
-  <!-- Load our React component. -->
-  <script src="app.js"></script>
+            <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
+    <!-- Load our React component. -->
+    <script src="app.js"></script>
     </body>
 </html>
