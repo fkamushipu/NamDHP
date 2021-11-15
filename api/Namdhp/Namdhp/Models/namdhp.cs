@@ -14,6 +14,7 @@ namespace Namdhp.Models
 
         public virtual DbSet<appointment> appointments { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<admin> admins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -71,6 +72,30 @@ namespace Namdhp.Models
 
             modelBuilder.Entity<user>()
                 .Property(e => e.known_allergies)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+    .Property(e => e.admin_name)
+    .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+                .Property(e => e.admin_lastname)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+                .Property(e => e.email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+                .Property(e => e.phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<admin>()
+                .Property(e => e.password)
                 .IsUnicode(false);
 
         }

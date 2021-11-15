@@ -73,7 +73,8 @@
                     </select>
                 </div>
                   <div class="form-group row">
-                    <input class="btn btn-success btn-lg btn-block" type="submit" value="Update Patient data"  id="save_user">
+                    <button class="btn btn-success btn-lg btn-block" onclick="update_user_btn()" type="submit"  id="update_user">Update Patient data</button>
+                    
                 </div>
                 </div>
               </div>
@@ -112,80 +113,35 @@
         $('#profile-vaccinated').html(user.vaccinated)
      }
 
-     $("#sent_appointment").click(function(){
-               
-        var appointment = new Object();
-        appointment.user_id = user.id;
-        appointment.reason = $("#appointment_reason").val();
-        appointment.email = user.email;
-
-          $.ajax({
-              url: "http://localhost:6503/api/appointments",
-              method: 'POST',
-              dataType: 'json',
-              data: appointment,
-
-              success: function(data){
-                  console.log(data)
-                  swal.fire({
-                    title: "Booking Successfully send",
-                })
-              },
-              error: function (request, status, error) {
-                console.log(request.responseText);
-                console.log("there is a problem");
-                }
-          })
-
-    })
-
     function logout(){
       sessionStorage.clear()
      window.location = "../register.html";
     }
-  /*   var person  = 
-    {
-        "name": null,
-        "last_name": null,
-        "vaccinated":null
+    function update_user_btn(){
+                 var user= new Object();  
+                 user.id  = $('#id').val();         
+                 user.vaccinated= $('#vaccinated').val();
+                 user.vaccination_type= $('#vaccine_type').val();
+                 console.log(user);
 
-    }; */
-
-
-    //QR Code javascript
-    // var person  = new Object();
-
-   
-
-   // var  input =  person;   //document.querySelector(".form input"); 
-    let button = document.querySelector(".form button");
-    let qrImg = document.querySelector(".qr-img img");
-
-    button.addEventListener("click",function(){
-     // person.name = user.name;
-    //  person.last_name = user.last_name;
-     // person.vaccinated = user.vaccinated;
-     
-      
-     // console.log(person)
-      let data =  "Name: "+ user.name + "\n" + " Last Name: "+  user.last_name + "\n"+ " Vaccinated: "+ user.vaccinated  ;
-      console.log(data)
-      if(data !== null){
-        let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
-        qrImg.src = imgSrc;
-      }
-    })
-    /* let span = document.querySelector(".qr-info");
-    let button = document.querySelector("button");
-    let qrimg =document.querySelector(".qr-img qr");
-
-    button.addEventListener("click", function(){
-        let data = span.value;
-        if(data.length > 0){
-            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+data;
-    qrImg.src = imgSrc;
-        }
-    }) */
+            $.ajax({
+                url:"thtp://localhost:6503/api/users"+user.id,
+                method: 'PUT',
+                dataType: 'json',
+               
+                data: user,
+                success:function(user){
+                    console.log(user)
+                    Swal.fire({
+                    title: 'User Vacccine Status Updated successfully!',
+                    type: 'success'
+                });
+            },
+            error: function(err){
+            console.log(err);
+              }
+           });
+        }; 
     
   </script> 
 
