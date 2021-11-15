@@ -1,20 +1,24 @@
+/*Card Design*/
 .card{
-    display: flex;
+    display: flex; /*Flexible display*/
+    margin-top: 14px;
     border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2);
+    box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2); /*Box shaadow except the top of the card box*/
 }
+
+/*Card Heading*/
 .card-header{
-    flex:1;
     padding: 30px;
 	max-width: 250px;
 	text-align: center;
 	background-color: rgb(163, 163, 141);
     letter-spacing: 1px;
-	text-transform: uppercase;
+	text-transform: uppercase; 
     border-radius: 20px  0  0  20px  ;
     font-weight: bold;
 
 }
+/*Card Content*/
 .card-body{
     flex:6;
     padding:14px;
