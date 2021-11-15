@@ -135,7 +135,9 @@
 
   /*Change text color when hovering the side navigation*/
   .sidenav > p > a:hover {
-    color: #88eb86;
+    background: -webkit-linear-gradient(90deg , yellow 5% , red 70% );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  
     text-decoration: none;
   }
 
