@@ -3,20 +3,19 @@
     display: flex; /*Flexible display*/
     margin-top: 14px;
     border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(36, 36, 36, 0.2); /*Box shaadow except the top of the card box*/
+    box-shadow: 0 10px 10px #ffe7a4;  /*Box shadow except the top of the card box*/
 }
 
 /*Card Heading*/
 .card-header{
     padding: 30px;
-	max-width: 250px;
+	width: 25%;
 	text-align: center;
-	background-color: rgb(163, 163, 141);
+    background: linear-gradient(90deg, rgb(248, 163, 83) 0%, rgba(255, 183, 0, 0.863) 35%, rgba(248, 20, 20, 0.459) 100%);
     letter-spacing: 1px;
 	text-transform: uppercase; 
     border-radius: 20px  0  0  20px  ;
     font-weight: bold;
-
 }
 /*Card Content*/
 .card-body{
