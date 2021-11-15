@@ -125,16 +125,30 @@
                     </div>
                     <hr>
                     <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Vaccinated</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <span id="vaccination"></span>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Vaccine Type</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                          <span id="vaccine_type"></span>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
                       <div class="col-sm-12">
                         <!-- <a class="btn btn-info " id="button"  onclick="document.getElementById('qr_code').style.display='block'">Generate QR</a>-->
                         <div class="center">
                           <div class="form">
                             <div class="form-element">
-                              <label for="data-ip">Enter data</label>
-                              <input type="text" id="data-ip">
-                            </div>
-                            <div class="form-element">
-                              <button>Generate QR Code</button>
+                              <button class="btn btn-success btn-block">Generate QR Code</button>
                             </div>
                           </div>
                           <div class="qr-img">
@@ -146,18 +160,6 @@
                     <br>
                     <hr>
                     <br>
-                    <!--
-                    <div class="row" style="display: none;" id="qr_code" > 
-                      <ul class="qr-info" >
-                          <p class="qr-data"> <span id="qr-name"></span> <span id="qr-last-name"></span> 
-                              <br>
-                          Vaccinated : <span id="qr-vaccinated"></span></p>
-                      </ul>
-                      <div class="col-sm-12 qr-img">
-                          <span id="qr"></span>
-                      </div>
-                  </div>
-                  -->
                 </div>
 
                 <div class="row gutters-sm">
@@ -218,6 +220,9 @@
         $('#profile-last-name').html(user.last_name)
         $('#profile-name').html(user.name)
         $('#profile-vaccinated').html(user.vaccinated)
+        $('#vaccine_type').html(user.vaccine_type)
+        $('#vaccination').html(user.vaccinated)
+        
      }
 
      $("#sent_appointment").click(function(){
