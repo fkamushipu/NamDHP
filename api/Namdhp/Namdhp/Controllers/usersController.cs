@@ -23,7 +23,8 @@ namespace Namdhp.Controllers
         }
 
         // GET: api/users/5
-      //  [ResponseType(typeof(user))]
+        //  [ResponseType(typeof(user))]
+
         [Route("authenticate")]
         public IHttpActionResult auth(string username, string password)
         {
