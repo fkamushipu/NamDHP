@@ -70,7 +70,7 @@ var LikeButton = function (_React$Component) {
             { className: 'col-md-4 col-sm-2', key: n._id },
             React.createElement(
               'div',
-              { className: 'card primary-shadow rounded-md  pa-2 ', style: { width: "35rem" } },
+              { className: 'card primary-shadow rounded-md  pa-2 ', style: { height: "60rem" } },
               React.createElement(
                 'div',
                 { className: 'card-body' },
