@@ -17,7 +17,6 @@
         <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
         <link rel="stylesheet" href="../style/style.css">
-        <link rel="stylesheet" href="../style/booking.css">
         <link rel="stylesheet" href="../style/register.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -54,9 +53,11 @@
             </div>
         </nav>
         <!--Content-->
-        <div class="container-fluid">    
-          <div class="row content ">
-
+        <div class="container-fluid" style="background-image: url('../images/health professionals.jpg'); 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; ">   
+            <div class="row content " >
               <!--Admin Login Form-->
                 <div class="login" >
                     <div class="card-header heading1 text-center">Admin Log in </div>
@@ -108,7 +109,7 @@
                         console.log(data)
 
                         //Logged user details are then stored in the session storage
-                        sessionStorage.setItem('user_details', JSON.stringify(data));
+                        sessionStorage.setItem('admin_details', JSON.stringify(data));
                         window.location = "adminstration.html" 
                     }
                     //If the information entered is wrong 

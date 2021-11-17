@@ -29,10 +29,32 @@
     <body>
       <div class="container">
         <div class="main-body">
+          <nav class= "navbar  navbar-default " id="top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                  <a class="navbar-left" href="#"><img src="../images/Nam-DHP3.png"></a>
+                </div>
+                <div class="collapse  navbar-collapse" id="topNavigation">
+                    <ul class="nav navbar-nav">
+                      <li class="breadcrumb-item active"><a href="#top">Update User </a></li>
+                      <li class="breadcrumb-item"><a href="#Bookings">Bookings</a></li>
+                     
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
           <div class="container-fluid">
             <div class="row content">
               <div class="col-sm-9">
-                <div class="card mb-3">
+                <div class="card mb-3" id="AddUser">
                   <h6 class="heading1">Add User Vaccination details</h6>
                   <div class="card-body">
                     <div class="form-group row">
@@ -47,20 +69,20 @@
                   <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right"> Patient First name</label>
                     <div class="col-md-6">
-                        <input type="text" id="name" class="form-control" name="name" placeholder="Enter patient'First name" readonly />
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Enter patient's First name" readonly />
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="last_name" class="col-md-4 col-form-label text-md-right"> Patient name</label>
+                    <label for="last_name" class="col-md-4 col-form-label text-md-right"> Patient Last name</label>
                     <div class="col-md-6">
-                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter patient's last name" readonly/>
+                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter patient's Last name" readonly/>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="vaccinated" class="col-md-4 col-form-label text-md-right">Is the patient vaccinated ?</label>
                     <select class="col-md-6 form-control" id="vaccinated">
                         <optgroup>
-                            <option value="true" >Yes</option>
+                            <option selected="selected" value="true" >Yes</option>
                             <option value="false" >No</option>
 
                         </optgroup>
@@ -84,7 +106,45 @@
                     <button class="btn btn-success btn-lg btn-block" onclick="update_user_btn()" type="submit"  id="update_user">Update Patient data</button>
                   </div>
                 </div>
-              </div>
+                </div>
+                <br><br><br><br>
+
+                <!--Bookings Approval-->
+                <div class="card mb-3" id="Bookings">
+                  <h6 class="heading1">Bookings</h6>
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="appointment" class="col-md-4 col-form-label text-md-right">Booking: </label>
+                      <select class="col-md-6 form-control" id="appointment">
+                          <optgroup>
+                              <option selected="selected" >Select Booking</option>
+                          </optgroup>
+                      
+                      </select>
+                  </div>
+                  <div class="form-group row">
+                    <label for="booking_name" class="col-md-4 col-form-label text-md-right"> Patient First name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="booking_name" class="form-control" name="booking_name" placeholder="Enter patient'First name" readonly />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="booking_last_name" class="col-md-4 col-form-label text-md-right"> Patient Last name</label>
+                    <div class="col-md-6">
+                        <input type="text" id="booking_last_name" class="form-control" name="booking_last_name" placeholder="Enter patient's last name" readonly/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="schedule_date" class="col-md-4 col-form-label text-md-right">Appointment Schedule date</label>
+                    <div class="col-md-6">
+                        <input type="date" id="schedule_date" class="form-control" name="schedule_date" placeholder="Schedule a date" required/>
+                    </div>
+                </div>
+                  <div class="form-group row">
+                    <button class="btn btn-success btn-lg btn-block"  type="submit"  id="send_approval">Approve Booking</button>
+                  </div>
+                </div>
+                </div>
             </div>
           </div>
         </div>
@@ -111,8 +171,12 @@
     <script type="text/javascript">
 
       //Load the list of users in the user's table
+      var admin=null;
       window.onload = function(){
           load_user_patient('Patient')
+          load_booking('Booking')
+          admin = JSON.parse(sessionStorage.admin_details)
+          console.log(admin)
       }
 
       //Logout function
@@ -141,7 +205,7 @@
           $('#username').html(user_list);     
         });
       };
-      //Function to change user's details
+      //Function to get user's details
       $("#username").change(function(){
 
         var user_id = $("#username").val();
@@ -158,7 +222,8 @@
             $('#vaccinated').val(data.vaccinated);
 
             if (data.vaccination_type == null) {
-              $('#vaccine_type').val("<option>Not Vaccinated</option>");
+              $('#vaccine_type').append('<option selected="Selected" Value="Not Vaccinated">Not Vaccinated</option>');
+             // $('#vaccinated').append('<option selected="Selected" Value="No">No</option>');
             }
             else{
               $('#vaccine_type').val(data.vaccination_type);
@@ -184,8 +249,8 @@
           dataType: 'json',
             
           data: user_details,
-          success:function(data){
-            console.log(data)
+          success:function(user_details){
+            console.log(user_details)
 
             //Success Alert
             Swal.fire({
@@ -199,7 +264,65 @@
             console.log(err);
           }
         });
-      }; 
+      };
+
+
+      //Bookings Approval 
+      var booking = null;
+      function load_booking(id){
+
+        var booking_list='';
+        $.getJSON("http://localhost:6503/api/appointments", function(data){
+
+          booking_list += '<option value=""> Select '+id+' </option>';
+          data.reverse();
+          $.each(data, function(key,value){
+              if(id != ''){
+                booking_list += '<option value="'+value.user_id+'">'+value.reason+'</option>';
+              }
+              else{
+                  
+              }
+          });
+
+          $('#appointment').html(booking_list);     
+        });
+      };
+      var user_booking = null;
+      //Function to get user's details
+      $("#appointment").change(function(){
+
+        var booking_id = $("#appointment").val();
+
+        $.ajax({
+          url:"http://localhost:6503/api/users/"+booking_id,
+          method: 'GET',
+          dataType: 'json',
+              
+          success:function(data){
+            console.log(data)
+            user_booking = data;
+            $('#booking_name').val(data.name);
+            $('#booking_last_name').val(data.last_name);
+         
+
+           
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+    
+      })
+     
+      $("#send_approval").click(function(e){
+        
+        var email_subject = "NAMDHP Booking"
+        var email_body = "Dear: "+user_booking.name +" "+ user_booking.last_name+ "\n" +" , this is to inform you that your booking was approved and is scheduled on the: "+$("#schedule_date").val()+" at UNAM Clinic! Yours faithfully  "+ admin.admin_name+ " "+ admin.admin_lastname + "."
+        window.open('mailto:'+user_booking.email+'?subject='+email_subject+'&body='+email_body+'');
+      })
+
+      
     </script> 
   </body>
 </html>

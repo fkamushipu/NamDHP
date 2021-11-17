@@ -160,3 +160,5 @@ C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\Microsoft.Owin.
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\Microsoft.Owin.Cors.xml
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Text.Encodings.Web.xml
+C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Web.Http.Cors.dll
+C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Web.Http.Cors.xml
