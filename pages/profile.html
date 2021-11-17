@@ -5,15 +5,29 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Digital Health Passport">	
+
+        <!--Search keywords-->
         <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
         <meta name="author" content="Feni Kamushipu">
+
+        <!--Page title -->
         <title>Nam DHP</title>
+
+        <!--Icon for the website tab-->
         <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
+
+        <!--Bootstrap Styling-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        
+        <!--The styling-->
         <link rel="stylesheet" href="../style/style.css">
         <link rel="stylesheet" href="../style/profile.css">
         <link rel="stylesheet" href="../style/register.css">
+
+        <!--Ajax script link-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!--Bootstrap Styling link-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         
     
@@ -21,6 +35,8 @@
     <body>
       <div class="container">
         <div class="main-body">
+
+          <!--Top Navigation-->
           <nav class= "navbar  navbar-default ">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -45,6 +61,7 @@
           </nav>
           <div class="container-fluid">
             <div class="row content">
+              <!--Side content box with profile-->
               <div class="col-sm-4">
                 <div class="card">
                   <div class="card-body">
@@ -84,6 +101,8 @@
                   </ul>
                 </div>
               </div>
+
+               <!--Right Side content box with user details-->
               <div class="col-sm-9">
                 <div class="card mb-3">
                   <h6 class="heading1">COVID-19 vaccination Card </h6>
@@ -144,7 +163,6 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                        <!-- <a class="btn btn-info " id="button"  onclick="document.getElementById('qr_code').style.display='block'">Generate QR</a>-->
                         <div class="center">
                           <div class="form">
                             <div class="form-element">
@@ -167,7 +185,7 @@
           </div>
         </div>
     </div>
-        <!-- Load React. -->
+  <!-- Load React. -->
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
@@ -227,35 +245,17 @@
 
     })
 
+    //Logout Function
     function logout(){
       sessionStorage.clear()
      window.location = "../register.html";
     }
-  /*   var person  = 
-    {
-        "name": null,
-        "last_name": null,
-        "vaccinated":null
-
-    }; */
-
-
-    //QR Code javascript
-    // var person  = new Object();
-
-   
-
-   // var  input =  person;   //document.querySelector(".form input"); 
+    
+    //
     let button = document.querySelector(".form button");
     let qrImg = document.querySelector(".qr-img img");
 
     button.addEventListener("click",function(){
-     // person.name = user.name;
-    //  person.last_name = user.last_name;
-     // person.vaccinated = user.vaccinated;
-     
-      
-     // console.log(person)
      
       let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccinated  + "\n" + " Vaccine Type: " + user.vaccination_type;
       
@@ -267,20 +267,6 @@
         
       }
     })
-    /* let span = document.querySelector(".qr-info");
-    let button = document.querySelector("button");
-    let qrimg =document.querySelector(".qr-img qr");
-
-    button.addEventListener("click", function(){
-        let data = span.value;
-        if(data.length > 0){
-            let imgsrc= "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+data;
-    qrImg.src = imgSrc;
-        }
-    }) */
-    
   </script> 
-
-
     </body>
 </html>
