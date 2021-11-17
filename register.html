@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="style/register.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!--Sweet Alerts Script-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
         
     </head>
     <body>
@@ -75,41 +77,41 @@
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" />
+                                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" required/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="last_name" class="col-md-4 col-form-label text-md-right">Last name</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter your last name" />
+                                                <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Enter your last name" required />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" />
+                                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" required/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                             <div class="col-md-6">
-                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" />
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" required/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="place_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
                                             <div class="col-md-6">
-                                                <input type="date" id="place_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" />
+                                                <input type="date" id="place_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" required/>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
-                                            <select class="col-md-6 form-control" id="gender">
+                                            <select class="col-md-6 form-control" id="gender" required>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                                 <option>Other</option>
@@ -119,20 +121,20 @@
                                         <div class="form-group row">
                                             <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" >
+                                                <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" required >
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                             <div class="col-md-6">
-                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" />
+                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" required />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="pregnancy_status" class="col-md-4 col-form-label text-md-right">Are You Pregnant?</label>
-                                            <select class="col-md-6 form-control" id="pregnancy_status">
+                                            <select class="col-md-6 form-control" id="pregnancy_status" required>
                                                 <optgroup>
                                                     <option value="true" >Yes</option>
                                                     <option value="false" >No</option>
@@ -144,7 +146,7 @@
 
                                         <div class="form-group row">
                                             <label for="lactating_status" class="col-md-4 col-form-label text-md-right">Are you breast feeding ?</label>
-                                            <select class="col-md-6 form-control" id="lactating_status" >
+                                            <select class="col-md-6 form-control" id="lactating_status" required>
                                                 <optgroup><option value="true">Yes</option>
                                                     <option value="false">No</option></optgroup>
                                                 
@@ -153,7 +155,7 @@
 
                                         <div class="form-group row">
                                             <label for="marital_status" class="col-md-4 col-form-label text-md-right">Marital Status</label>
-                                            <select class="col-md-6 form-control" id="marital_status" >
+                                            <select class="col-md-6 form-control" id="marital_status" required>
                                                 <optgroup>
 
                                             
@@ -170,21 +172,21 @@
                                         <div class="form-group row">
                                             <label for="guardian_name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " />
+                                                <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " required />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="guardian_contact" class="col-md-4 col-form-label text-md-right">Guardian Contactr</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number">
+                                                <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="known_allergies" class="col-md-4 col-form-label text-md-right">Known Allergies </label>
                                             <div class="col-md-6">
-                                                <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " />
+                                                <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " required/>
                                             </div>
                                         </div>
 
@@ -243,8 +245,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
    
-    <!--Swal Sweet Alerts Script-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+    <!--Swal Sweet Alerts Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
@@ -259,10 +262,10 @@
 
                 success: function(data){
 
-                    //If the information is true store the user details session storage
+                    //If the information is true, store the user details session storage
                     if (data != undefined) {
-
                         console.log(data)
+                        
                         //Logged user details are then stored in the session storage
                         sessionStorage.setItem('user_details', JSON.stringify(data));
                         window.location = "pages/profile.html" 
@@ -273,7 +276,7 @@
                         swal.fire({
                             title:'Wrong Password or username',
                             showConfirmButton: true,
-                            icon: "error",
+                            type: 'error',
                             timer: 2500
                         })
                     }
@@ -314,7 +317,7 @@
                     console.log(data)
                   // Alert when the user is successfully registered
                     swal.fire({
-                    icon: 'success',
+                    type: 'success',
                     title: "Successfully Registered " +  $("#name").val(),
                     showConfirmButton: false,
                     timer: 2500

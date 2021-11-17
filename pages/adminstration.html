@@ -164,10 +164,6 @@
                     }
                     user_details = data;
                  
-                /*     Swal.fire({
-                    title: 'User Vacccine Status Updated successfully!',
-                    type: 'success'
-                }); */
             },
             error: function(err){
             console.log(err);
@@ -176,26 +172,8 @@
 
         })
     function update_user_btn(){
-      
-/*                  var user= new Object()
-                 user.id = user_details.id; 
-                 user.name = user_details.name;
-                 user.last_name = user_details.last_name;
-                 user.username = user_details.username;
-                 user.password = user_details.password;
-                 user.place_of_birth = user_details.place_of_birth;
-                 user.gender = user_details.gender;
-                 user.cellphone = user_details.cellphone;
-                 user.email = user_details.email;
-                 user.pregnancy_status = user_details.pregnancy_status;
-                 user.lactating_status = user_details.lactating_status;
-                 user.marital_status = user_details.marital_status;
-                 user.guardian_name = user_details.guardian_name;
-                 user.guardian_contact = user_details.guardian_contact; */
                  user_details.vaccinated= $('#vaccinated').val();
                  user_details.vaccination_type = $('#vaccine_type').val();
-                // user.known_allergies = user_details.known_allergies;
-                // user.date_created = user_details.date_created;
                  console.log(user_details);
 
             $.ajax({

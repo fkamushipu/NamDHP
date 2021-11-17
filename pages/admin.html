@@ -20,8 +20,9 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!--Sweet Alerts Script-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
         
-    
     </head>
     <body>
         <nav class= "navbar  navbar-default ">
@@ -82,40 +83,44 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
-    <script type="text/javascript">
-        $("#admin_sign_in").click(function(){
-        $.ajax({
-        url: "http://localhost:6503/authenticate_admin?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
-        method: 'POST',
-        dataType: 'json',
-
-        success: function(data){
-        // 
-        //console.log(data)
-        
-        if (data != undefined) {
-            console.log(data)
-            sessionStorage.setItem('user_details', JSON.stringify(data));
-            window.location = "adminstration.html" 
-        }else{
-            swal.fire({
-            title: "Wrong Password or username"
-        })
-        }
-        },
-        error: function (request, status, error) {
-        // console.log(request.responseText);
-        //console.log("there is a problem");
-        
-        }
+     
+    <!--Swal Sweet Alerts Scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     
+    <script type="text/javascript">
+
+    //On click of the button with id sign_in, authenticate username and password
+        $("#admin_sign_in").click(function(){
+            $.ajax({
+                url: "http://localhost:6503/authenticate_admin?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
+                method: 'POST',
+                dataType: 'json',
+
+                success: function(data){
+
+                     //If the information is true, store the user details session storage
+                    if (data != undefined) {
+                        console.log(data)
+
+                        //Logged user details are then stored in the session storage
+                        sessionStorage.setItem('user_details', JSON.stringify(data));
+                        window.location = "adminstration.html" 
+                    }
+                    //If the information entered is wrong 
+                    else{
+                        swal.fire({
+                            title:'Wrong Password or username',
+                            showConfirmButton: true,
+                            type: 'error',
+                            timer: 2500
+                        })
+                    }
+                },
+            error: function (request, status, error) {
+            }
+        })
     })
 
-})
-
-
-      </script>
-
+    </script>
     </body>
-    
 </html>
