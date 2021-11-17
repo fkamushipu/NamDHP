@@ -198,8 +198,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4"><!--4 of 12 columns -->
-                    
+                <div class="col-sm-4">
+                    <!--4 of 12 columns -->
                   <div class="card mb-3 cardedit">
                     <img src="images/Covid Info.jpg" class="card-img-top " alt="Covid Image"><br><br>
                     <div class="card-body">
@@ -242,45 +242,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+   
+    <!--Swal Sweet Alerts Script-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
     <script type="text/javascript">
-    
-    $("#sign_in").click(function(){
-    $.ajax({
-        url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
-        method: 'POST',
-        dataType: 'json',
 
-        success: function(data){
-        // 
-        //console.log(data)
-        
-        if (data != undefined) {
-            console.log(data)
-            sessionStorage.setItem('user_details', JSON.stringify(data));
-            window.location = "pages/profile.html" 
-        }else{
-            swal.fire({
-            title: "Wrong Password or username"
+    //On click of the button with id sign_in, authenticate username and password
+    $("#sign_in").click(function(){
+        $.ajax({
+            url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
+            method: 'POST',
+            dataType: 'json',
+
+                success: function(data){
+
+                    //If the information is true store the user details session storage
+                    if (data != undefined) {
+
+                        console.log(data)
+                        //Logged user details are then stored in the session storage
+                        sessionStorage.setItem('user_details', JSON.stringify(data));
+                        window.location = "pages/profile.html" 
+                    }
+
+                    //If the information entered is wrong 
+                    else{
+                        swal.fire({
+                            title:'Wrong Password or username',
+                            showConfirmButton: true,
+                            icon: "error",
+                            timer: 2500
+                        })
+                    }
+                },
+            error: function (request, status, error) {
+            }
         })
-        }
-        },
-        error: function (request, status, error) {
-        // console.log(request.responseText);
-        //console.log("there is a problem");
-        
-        }
-    
     })
 
-})
-
-//User registration
+// Save User registration on click of the button with id save_user
    $("#save_user").click(function(){
-    
-       var user = new Object();
+
+       //Add user inputs to the corresponding column in the user table
+         var user = new Object();
          user.name = $("#name").val();
          user.last_name = $("#last_name").val();
          user.username = $("#username").val();
@@ -295,7 +302,8 @@
          user.guardian_name =$("#guardian_name").val();
          user.guardian_contact =$("#guardian_contact").val();
          user.known_allergies =$("#known_allergies").val();     
-        console.log(user)
+         console.log(user)
+
           $.ajax({
               url: "http://localhost:6503/api/users",
               method: 'POST',
@@ -303,19 +311,23 @@
               data: user,
 
               success: function(data){
-                  console.log(data)
-                  swal.fire({
-                   title: "Successfully Registered " +  $("#name").val()
-               })
+                    console.log(data)
+                  // Alert when the user is successfully registered
+                    swal.fire({
+                    icon: 'success',
+                    title: "Successfully Registered " +  $("#name").val(),
+                    showConfirmButton: false,
+                    timer: 2500
+                    })
                setTimeout(() => {
                    $("#register").hide();  
-               }, 2000);
-             
-
+                    }, 2000);
               },
+            
               error: function (request, status, error) {
                console.log(request.responseText);
-               console.log("there is a problem");
+               console.log("There is a problem");
+               
                }
            
           })
