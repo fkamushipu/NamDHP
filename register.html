@@ -15,6 +15,7 @@
         <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
         <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
+        <!--Styling-->
         <link rel="stylesheet" href="style/style.css">
         <link rel="stylesheet" href="style/register.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -208,6 +209,8 @@
                       <h5 class="card-title heading5">Log In</h5><br>
                       <p class="card-text">If you do not already have an existing Nam DHP account, go to Sign Up!</p>
                       <button class="btn btn-primary btn-block" id="signin" onclick="document.getElementById('login').style.display='block'">Log In</button>
+                      
+                      <!--Login Modal-->
                       <div class="login-modal-div " id="login" >
                         <div class="login" >
                             <span onclick="document.getElementById('login').style.display='none'" class="close">&times;</span>
@@ -235,110 +238,108 @@
                 </div>
             </div>
         </div>
-        
 
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="vendor/datepicker/moment.min.js"></script>
+        <script src="vendor/datepicker/daterangepicker.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
-   
-    <!--Swal Sweet Alerts Scripts-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-  
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
-    <script type="text/javascript">
-
-    //On click of the button with id sign_in, authenticate username and password
-    $("#sign_in").click(function(){
-        $.ajax({
-            url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
-            method: 'POST',
-            dataType: 'json',
-
-                success: function(data){
-
-                    //If the information is true, store the user details session storage
-                    if (data != undefined) {
-                        console.log(data)
-                        
-                        //Logged user details are then stored in the session storage
-                        sessionStorage.setItem('user_details', JSON.stringify(data));
-                        window.location = "pages/profile.html" 
-                    }
-
-                    //If the information entered is wrong 
-                    else{
-                        swal.fire({
-                            title:'Wrong Password or username',
-                            showConfirmButton: true,
-                            type: 'error',
-                            timer: 2500
-                        })
-                    }
-                },
-            error: function (request, status, error) {
-            }
-        })
-    })
-
-// Save User registration on click of the button with id save_user
-   $("#save_user").click(function(){
-
-       //Add user inputs to the corresponding column in the user table
-         var user = new Object();
-         user.name = $("#name").val();
-         user.last_name = $("#last_name").val();
-         user.username = $("#username").val();
-         user.password =$("#password").val();
-         user.place_of_birth =$("#place_of_birth").val();
-         user.gender = $("#gender").val();
-         user.cellphone=$("#cellphone").val();
-         user.email = $("#email").val();
-         user.pregnancy_status = $("#pregnancy_status").val();
-         user.lactating_status = $("#lactating_status").val();
-         user.marital_status = $("#marital_status").val();
-         user.guardian_name =$("#guardian_name").val();
-         user.guardian_contact =$("#guardian_contact").val();
-         user.known_allergies =$("#known_allergies").val();     
-         console.log(user)
-
-          $.ajax({
-              url: "http://localhost:6503/api/users",
-              method: 'POST',
-              dataType: 'json',
-              data: user,
-
-              success: function(data){
-                    console.log(data)
-                  // Alert when the user is successfully registered
-                    swal.fire({
-                    type: 'success',
-                    title: "Successfully Registered " +  $("#name").val(),
-                    showConfirmButton: false,
-                    timer: 2500
-                    })
-               setTimeout(() => {
-                   $("#register").hide();  
-                    }, 2000);
-              },
-            
-              error: function (request, status, error) {
-               console.log(request.responseText);
-               console.log("There is a problem");
-               
-               }
-           
-          })
-
-   })
-
-</script>
-
-    </body>
+        <!--Ajax Scripts-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
     
+        <!--Swal Sweet Alerts Scripts-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+        
+        <script type="text/javascript">
+            //On click of the button with id sign_in, authenticate username and password
+            $("#sign_in").click(function(){
+                $.ajax({
+                    url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
+                    method: 'POST',
+                    dataType: 'json',
+
+                        success: function(data){
+
+                            //If the information is true, store the user details session storage
+                            if (data != undefined) {
+                                console.log(data)
+
+                                //Logged user details are then stored in the session storage
+                                sessionStorage.setItem('user_details', JSON.stringify(data));
+                                window.location = "pages/profile.html" 
+                            }
+
+                            //If the information entered is wrong 
+                            else{
+                                swal.fire({
+                                    title:'Wrong Password or username',
+                                    showConfirmButton: true,
+                                    type: 'error',
+                                    timer: 2500
+                                })
+                            }
+                        },
+                    error: function (request, status, error) {
+                    }
+                })
+            })
+
+            // Save User registration on click of the button with id save_user
+            $("#save_user").click(function(){
+
+                //Add user inputs to the corresponding column in the user table
+                var user = new Object();
+                user.name = $("#name").val();
+                user.last_name = $("#last_name").val();
+                user.username = $("#username").val();
+                user.password =$("#password").val();
+                user.place_of_birth =$("#place_of_birth").val();
+                user.gender = $("#gender").val();
+                user.cellphone=$("#cellphone").val();
+                user.email = $("#email").val();
+                user.pregnancy_status = $("#pregnancy_status").val();
+                user.lactating_status = $("#lactating_status").val();
+                user.marital_status = $("#marital_status").val();
+                user.guardian_name =$("#guardian_name").val();
+                user.guardian_contact =$("#guardian_contact").val();
+                user.known_allergies =$("#known_allergies").val();     
+                console.log(user)
+
+                $.ajax({
+                    url: "http://localhost:6503/api/users",
+                    method: 'POST',
+                    dataType: 'json',
+                    data: user,
+
+                    success: function(data){
+                        console.log(data)
+                        // Alert when the user is successfully registered
+                        swal.fire({
+                        type: 'success',
+                        title: "Successfully Registered " +  $("#name").val(),
+                        showConfirmButton: false,
+                        timer: 2500
+                        })
+
+                        setTimeout(() => {
+                        $("#register").hide();  
+                        }, 2000);
+                        },
+                
+                    error: function (request, status, error) {
+                    console.log(request.responseText);
+                    console.log("There is a problem");
+                    }
+                
+                })
+
+            })
+
+        </script>
+    </body>
 </html>

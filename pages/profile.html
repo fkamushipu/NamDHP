@@ -166,9 +166,13 @@
                         <div class="center">
                           <div class="form">
                             <div class="form-element">
+                              
+                              <!--Button for generating QR code-->
                               <button class="btn btn-success btn-block">Generate QR Code</button>
                             </div>
                           </div>
+
+                          <!--QR code image-->
                           <div class="qr-img">
                             <img src="">
                           </div>
@@ -200,73 +204,75 @@
 
   <script type="text/javascript">
     var user = null;
-  window.onload = function(){
-         user = JSON.parse(sessionStorage.user_details)
-        console.log(user)
-        $("#name").html(user.name)
-        $("#qr-name").html(user.name)
-        $("#last_name").html(user.last_name)
-        $("#qr-last-name").html(user.last_name)
-        $("#qr-vaccinated").html(user.vaccinated)
-        $("#email").html(user.email)
-        $("#cellphone").html(user.cellphone)
-        $('#profile-last-name').html(user.last_name)
-        $('#profile-name').html(user.name)
-        $('#profile-vaccinated').html(user.vaccinated)
-        $('#vaccine_type').html(user.vaccination_type)
-        $('#vaccination').html(user.vaccinated)
-        
-     }
-
-     $("#sent_appointment").click(function(){
-               
+    window.onload = function(){
+      user = JSON.parse(sessionStorage.user_details)
+      console.log(user)
+      $("#name").html(user.name)
+      $("#qr-name").html(user.name)
+      $("#last_name").html(user.last_name)
+      $("#qr-last-name").html(user.last_name)
+      $("#qr-vaccinated").html(user.vaccinated)
+      $("#email").html(user.email)
+      $("#cellphone").html(user.cellphone)
+      $('#profile-last-name').html(user.last_name)
+      $('#profile-name').html(user.name)
+      $('#profile-vaccinated').html(user.vaccinated)
+      $('#vaccine_type').html(user.vaccination_type)
+      $('#vaccination').html(user.vaccinated)
+      
+    }
+      //Sending an appointment
+      $("#sent_appointment").click(function(){    
         var appointment = new Object();
         appointment.user_id = user.id;
         appointment.reason = $("#appointment_reason").val();
         appointment.email = user.email;
 
-          $.ajax({
-              url: "http://localhost:6503/api/appointments",
-              method: 'POST',
-              dataType: 'json',
-              data: appointment,
-
-              success: function(data){
-                  console.log(data)
-                  swal.fire({
-                    title: "Booking Successfully send",
-                })
-              },
-              error: function (request, status, error) {
-                console.log(request.responseText);
-                console.log("there is a problem");
-                }
-          })
-
-    })
+        $.ajax({
+          url: "http://localhost:6503/api/appointments",
+          method: 'POST',
+          dataType: 'json',
+          data: appointment,
+          success: function(data){
+            console.log(data)
+            swal.fire({
+              type: 'success',
+              title: "Booking Successfully send",
+              showConfirmButton: false,
+              timer: 2500
+            })
+          },
+          error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log("there is a problem");
+          }
+        })
+      })
 
     //Logout Function
     function logout(){
       sessionStorage.clear()
-     window.location = "../register.html";
+      window.location = "../register.html";
     }
-    
-    //
-    let button = document.querySelector(".form button");
-    let qrImg = document.querySelector(".qr-img img");
+  
+      //Selected  button and  the image that will updated 
+      let button = document.querySelector(".form button");
+      let qrImg = document.querySelector(".qr-img img");
 
-    button.addEventListener("click",function(){
-     
-      let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccinated  + "\n" + " Vaccine Type: " + user.vaccination_type;
-      
+      //on click event for the button
+      button.addEventListener("click",function(){
 
-      console.log(data)
-      if(data !== null){
-        let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
-        qrImg.src = imgSrc;
-        
-      }
-    })
-  </script> 
-    </body>
+        //String concatenation contantaining information from the user table
+        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccinated  + "\n" + " Vaccine Type: " + user.vaccination_type;
+        console.log(data)
+
+        if(data !== null){
+
+          //QR code generator API
+          let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
+          qrImg.src = imgSrc;
+        }
+      })
+    </script> 
+  </body>
 </html>

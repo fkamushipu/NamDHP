@@ -7,6 +7,8 @@
         <meta name="description" content="Digital Health Passport">	
         <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
         <meta name="author" content="Feni Kamushipu">
+        
+        <!--Page title-->
         <title>Nam DHP</title>
         <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -25,6 +27,7 @@
         
     </head>
     <body>
+        <!--Top Navigation-->
         <nav class= "navbar  navbar-default ">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -50,8 +53,11 @@
                 </div>
             </div>
         </nav>
+        <!--Content-->
         <div class="container-fluid">    
           <div class="row content ">
+
+              <!--Admin Login Form-->
                 <div class="login" >
                     <div class="card-header heading1 text-center">Admin Log in </div>
                     <div class="form-group row">
@@ -72,7 +78,6 @@
            </div>
         </div>  
         
-
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
     <script src="vendor/datepicker/daterangepicker.js"></script>
@@ -89,7 +94,7 @@
     
     <script type="text/javascript">
 
-    //On click of the button with id sign_in, authenticate username and password
+        //On click of the button with id sign_in, authenticate username and password
         $("#admin_sign_in").click(function(){
             $.ajax({
                 url: "http://localhost:6503/authenticate_admin?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
@@ -116,10 +121,11 @@
                         })
                     }
                 },
-            error: function (request, status, error) {
-            }
+
+                error: function (request, status, error) {
+                }
+            })
         })
-    })
 
     </script>
     </body>

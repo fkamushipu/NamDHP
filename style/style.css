@@ -1,160 +1,158 @@
 /*Apply this font size to text if it's not specified*/
-  body{
-    font-size:17px;
-  }
-  
-  /*Overwrite the bootstrap grid area for container-fluid class */
-  .container-fluid{
+body{
+  font-size:17px;
+}
+
+/*Overwrite the bootstrap grid area for container-fluid class */
+.container-fluid{
   grid-area: content-container !important;
 
-  }
+}
 
-  /* Remove the navbar's default margin-bottom and rounded borders */ 
-  .navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-    background-color: #e7e5e5;
-    grid-area: nav !important;
-    
-  }
-
-  /*Logo image resize*/
-  .navbar-default .navbar-left img{
-    width: auto;
-    height :60px;
-    padding :0;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin : 0;
-  }
-
-  /*Navigation list font color and weight*/
-  .navbar-default .navbar-nav > li > a {
-      color: rgb(0, 0, 0);
-      font-weight: bold;
-  }
-
-  /* Top Navigation list hover, background color*/
-  .navbar-default .navbar-nav > li > a:hover,
-  .navbar-default .navbar-nav > li > a:focus {
-      background-color: #d3d3d3;
-  }
-
-  /*Top Navigation active tab*/
-  .navbar-default .navbar-nav > .active > a,
-  .navbar-default .navbar-nav > .active > a:hover,
-  .navbar-default .navbar-nav > .active > a:focus {
-      color: #026C00;
-  }
-
-  /* [--Text under navbar-default have black color --]*/
-  .navbar-default .navbar-text {
-      color: rgb(0, 0, 0);
-  }
-
-  .navbar-default .navbar-toggle {
-      border-color:  #ffbb00;
-  }
-
-  /*Toggle Navigation list hover background color*/
-  .navbar-default .navbar-toggle:hover,
-  .navbar-default .navbar-toggle:focus {
-      background-color: #d3d3d3;
-  }
-
-  .navbar-default .navbar-toggle .icon-bar {
-      background-color: rgb(0, 0, 0);
-  }
-
-  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-  .row.content { height: 500px;
-  }
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #e7e5e5;
+  grid-area: nav !important;
   
-  /* Set gray background color and 100% height */
-  .sidenav  {
-    padding-top: 20px;
-    background-color: #f1f1f1;
-    height: 100%;
-    left: 0;
-    width: 20%;
-    
-  }
-  /*Close modal x cross, hover and focus  */
-  .close {
-      color: rgb(255, 0, 0);
-      float: right;
-      font-size: 50px;
-      font-weight: bold;
-      top: 0 ;
-    }
-    .close:hover,
-  .close:focus {
-    background-color: #000000;
-    color: rgb(255, 0, 0);
-    text-decoration: none;
-    cursor: pointer;
-  }
+}
 
-  /*Side navigation links */
-  .sidenav > p > a {
-      color: rgb(0, 0, 0);
-      text-decoration: none;
-      line-height: 2.5;
-      
-    }
-  /*[--<= Manipulated Headings  Start   =>-- ] */
-    .heading1{
-    color: #660740;
-    font-size: 24px;
-    padding: 20px 0 20px 0;
-    border-bottom: 1px solid #ffc0c0;
-    font-weight: bold;
-    text-align: center;
-    }
+/*Logo image resize*/
+.navbar-default .navbar-left img{
+  width: auto;
+  height :60px;
+  padding :0;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin : 0;
+}
 
+/*Navigation list font color and weight*/
+.navbar-default .navbar-nav > li > a {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+/* Top Navigation list hover, background color*/
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #d3d3d3;
+}
+
+/*Top Navigation active tab*/
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #026C00;
+}
+
+/* [--Text under navbar-default have black color --]*/
+.navbar-default .navbar-text {
+  color: rgb(0, 0, 0);
+}
+
+.navbar-default .navbar-toggle {
+  border-color:  #ffbb00;
+}
+
+/*Toggle Navigation list hover background color*/
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #d3d3d3;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: rgb(0, 0, 0);
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content { 
+  height: 500px;
+}
   
-    .heading5{
-    font-weight: bold;
-    text-align: center;
-    font-size: 30px;
-    
-    background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;  
-  }
+/* Set gray background color and 100% height */
+.sidenav  {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+  left: 0;
+  width: 20%;
+  
+}
+/*Close modal x cross, hover and focus  */
+.close {
+  color: rgb(255, 0, 0);
+  float: right;
+  font-size: 50px;
+  font-weight: bold;
+  top: 0 ;
+}
+  .close:hover,
+.close:focus {
+  background-color: #000000;
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  cursor: pointer;
+}
 
-  .heading6{
-    font-weight: bold;
-    text-align: center;
-    font-size: 24px;
-    background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;  
-  }
-  /*[--<= Manipulated Headings End   =>-- ] */
+/*Side navigation links */
+.sidenav > p > a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  line-height: 2.5;
+  
+}
+/*[--<= Manipulated Headings  Start   =>-- ] */
+.heading1{
+  color: #660740;
+  font-size: 24px;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #ffc0c0;
+  font-weight: bold;
+  text-align: center;
+}
 
-  /*Change text color when hovering the side navigation*/
-  .sidenav > p > a:hover {
-    background: -webkit-linear-gradient(90deg , yellow 5% , red 70% );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;  
-    text-decoration: none;
-  }
+.heading5{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  
+  background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  
+}
 
-  /*Box card shadow and round corners*/
-  .cardedit{
-    margin-top: 20px;
+.heading6{
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  background: -webkit-linear-gradient(120deg , yellow 35% , red 70% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  
+}
+/*[--<= Manipulated Headings End   =>-- ] */
+
+/*Change text color when hovering the side navigation*/
+.sidenav > p > a:hover {
+  background: -webkit-linear-gradient(90deg , yellow 5% , red 70% );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  
+  text-decoration: none;
+}
+
+/*Box card shadow and round corners*/
+.cardedit{
+  margin-top: 20px;
   box-shadow: 0 10px 10px #ffe7a4; 
   padding :14px;
   border-radius: 20px;
-  }
-  
+}
 
-  /* On small screens, set height to 'auto' for sidenav and grid */
-  @media screen and (max-width: 767px) {
-  .sidenav {
-    height: auto;
-    padding: 15px;
-  }
-  .row.content {height:auto;} 
-  }
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+  display: none;
+}
+.row.content {height:auto;} 
+}
