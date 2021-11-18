@@ -23,7 +23,8 @@ namespace Namdhp.Models
         [StringLength(50)]
         public string phone { get; set; }
 
-        public int admin_staff_number { get; set; }
+        [StringLength(50)]
+        public string  admin_staff_number { get; set; }
 
         [Required]
         [StringLength(50)]
