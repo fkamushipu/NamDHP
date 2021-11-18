@@ -55,3 +55,14 @@
   height: 15vw;
   object-fit: cover;
 }
+.admin_login-modal-div{
+  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 70px;
+  left: 0;
+  top: 9%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(87, 83, 83, 0.4);
+}

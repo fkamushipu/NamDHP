@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Digital Health Passport">	
+        <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
+        <meta name="author" content="Feni Kamushipu">
+        <title>Nam DHP</title>
+        <link rel="icon" href="images/DHP Done.png" type="image/x-icon">
+        <!--Bootstrap style-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- Vendor CSS-->
+        <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+        <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+        <!--Styling-->
+        <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/register.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!--Sweet Alerts Script-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+        
+    </head>
+    <body>
+        <div class="container-fluid">    
+          <div class="row content"><!--Container with 2 columns -->
+                <div class="col-sm-8"> <!--8 of 12 columns -->
+
+                    <!--Register Card -->
+                    <div class="card mb-3 cardedit">
+                        <img src="../images/health professionals.jpg" class="card-img-top " alt="Covid Image"><br><br>
+                        <div class="card-body">
+                            <h5 class="card-title heading5">Register Admin</h5><br>
+                            <p class="card-text">If you already have an existing Nam DHP account, <a href="admin.html">go to log in!</a>
+                                By registering to be a Nam DHP admin, 
+                                you will have access to patients medical health information related to COVID-19.
+                            And you will be able update user's Vaccination Status and vaccine types as well as vaccine types.</p>
+                                <br>
+                            <button class="btn btn-primary btn-block" id="signup" onclick="document.getElementById('my-form').style.display='block'">Register</button>
+                            
+                            <!--Sign Up / Register Form Modal-->
+                            <div class="login-modal-div" id="my-form">
+                                <div class="register" >
+                                    <span onclick="document.getElementById('my-form').style.display='none'" class="close">&times;</span>
+                                
+                                    <h1 class="heading1 text-center">Register Admin</h1>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="admin_name" class="col-md-4 col-form-label text-md-right">Admin Name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="admin_name" class="form-control" name="admin_name" placeholder="Enter admin name" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="admin_lastname" class="col-md-4 col-form-label text-md-right">Admin Last name</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="admin_lastname" class="form-control" name="admin_lastname" placeholder="Enter admin last name" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter admin username" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                            <div class="col-md-6">
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" minlength="10" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                                            <div class="col-md-6">
+                                                <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" minlength="10" required >
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                            <div class="col-md-6">
+                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" required />
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="form-group row">
+                                            <label for="admin_staff_number" class="col-md-4 col-form-label text-md-right">Staff Number </label>
+                                            <div class="col-md-6">
+                                                <input type="number" id="admin_staff_number" class="form-control" name="admin_staff_number" placeholder="Enter staff number " required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <input class="btn btn-success btn-lg btn-block" type="submit" value="Register"  id="save_admin">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="vendor/select2/select2.min.js"></script>
+        <script src="vendor/datepicker/moment.min.js"></script>
+        <script src="vendor/datepicker/daterangepicker.js"></script>
+
+        <!--Ajax Scripts-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+    
+        <!--Swal Sweet Alerts Scripts-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+        
+        <script type="text/javascript">
+            
+            // Save admin registration on click of the button with id save_admin
+            $("#save_admin").click(function(){
+
+                //Add user inputs to the corresponding column in the user table
+                var admin = new Object();
+                admin.admin_name = $("#admin_name").val();
+                admin.admin_lastname = $("#admin_lastname ").val();
+                admin.username = $("#username").val();
+                admin.password =$("#password").val();
+                admin.phone=$("#cellphone").val();
+                admin.email = $("#email").val();
+                admin.admin_staff_number = $("#admin_staff_number").val();
+
+                console.log(admin)
+
+                $.ajax({
+                    url: "http://localhost:6503/api/admins",
+                    method: 'POST',
+                    dataType: 'json',
+                    data: admin,
+
+                    success: function(data){
+                        console.log(data)
+                        // Alert when the admin is successfully registered
+                        swal.fire({
+                        type: 'success',
+                        title: "Successfully Registered " +  $("#name").val(),
+                        showConfirmButton: false,
+                        timer: 2500
+                        })
+
+                        setTimeout(() => {
+                        $("#register").hide();  
+                        }, 2000);
+                        },
+                
+                    error: function (request, status, error) {
+                        Swal.fire({
+                         title : "Please fill in all the informations",
+                     })
+                    console.log(request.responseText);
+                    console.log("There is a problem");
+                    }
+                
+                })
+
+            })
+
+        </script>
+    </body>
+</html>
