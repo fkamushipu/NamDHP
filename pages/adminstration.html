@@ -138,18 +138,34 @@
           console.log(admin)
       }
 
-      //Logout function
-      function logout(){
-        swal.fire({
-          type: 'warning',
-          title: "Account Logging out " ,
-          showConfirmButton: true,
-          timer: 7500
+      //Logout Function
+    function logout(){
+      
+      swal.fire({
+        type: 'warning',
+        title: "Log Out",
+        text: "Are you sure?",
+        showConfirmButton: 'Yes',
+        showCancelButton:'No',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        closeOnConfirm:true,
+        closeOnCancel:true,
+
+        }).then((result) => { 
+          if (result.value===true) { 
+            swal.fire({
+            type: 'warning',
+            title: "Account Logging out " ,
+            showConfirmButton: true,
+            timer: 7500
           })
-        sessionStorage.clear()
-        
-        window.location = "../register.html";
+            sessionStorage.clear()
+            window.location = "../index.html";
+          }
+        })
       }
+     
 
       var user_details = null;
       function load_user_patient(id){

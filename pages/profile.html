@@ -307,16 +307,32 @@
 
     //Logout Function
     function logout(){
+      
       swal.fire({
         type: 'warning',
-        title: "Account logging out",
-        showConfirmButton: true,
-        timer: 7500
+        title: "Log Out",
+        text: "Are you sure?",
+        showConfirmButton: 'Yes',
+        showCancelButton:'No',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        closeOnConfirm:true,
+        closeOnCancel:true,
+
+        }).then((result) => { 
+          if (result.value===true) { 
+            swal.fire({
+            type: 'warning',
+            title: "Account Logging out " ,
+            showConfirmButton: true,
+            timer: 7500
+          })
+            sessionStorage.clear()
+            window.location = "../index.html";
+          }
         })
-      sessionStorage.clear()
-      window.location = "../register.html";
-    }
-  
+      }
+     
       //Selected  button and  the image that will updated 
       let button = document.querySelector(".form button");
       let qrImg = document.querySelector(".qr-img img");

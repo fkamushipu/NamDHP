@@ -118,106 +118,39 @@
       //Load the list of users in the user's table
       var admin=null;
       window.onload = function(){
-          load_user_patient('Patient')
           load_booking('Booking')
           admin = JSON.parse(sessionStorage.admin_details)
           console.log(admin)
       }
 
-      //Logout function
-      function logout(){
-        swal.fire({
-          type: 'warning',
-          title: "Account Logging out " ,
-          showConfirmButton: true,
-          timer: 7500
+      //Logout Function
+    function logout(){
+      
+      swal.fire({
+        type: 'warning',
+        title: "Log Out",
+        text: "Are you sure?",
+        showConfirmButton: 'Yes',
+        showCancelButton:'No',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        closeOnConfirm:true,
+        closeOnCancel:true,
+
+        }).then((result) => { 
+          if (result.value===true) { 
+            swal.fire({
+            type: 'warning',
+            title: "Account Logging out " ,
+            showConfirmButton: true,
+            timer: 7500
           })
-        sessionStorage.clear()
-        window.location = "../register.html";
+            sessionStorage.clear()
+            window.location = "../index.html";
+          }
+        })
       }
-
-      var user_details = null;
-      function load_user_patient(id){
-
-        var user_list='';
-        $.getJSON("http://localhost:6503/api/users", function(data){
-
-          user_list += '<option value=""> Select '+id+' </option>';
-          data.reverse();
-          $.each(data, function(key,value){
-              if(id != ''){
-                user_list += '<option value="'+value.id+'">'+value.id+ " " +value.username+'</option>';
-              }
-              else{
-                  
-              }
-          });
-
-          $('#username').html(user_list);     
-        });
-      };
-      //Function to get user's details
-      $("#username").change(function(){
-
-        var user_id = $("#username").val();
-        $.ajax({
-          url:"http://localhost:6503/api/users/"+user_id,
-          method: 'GET',
-          dataType: 'json',
-              
-          success:function(data){
-            console.log(data)
-            $('#id').val(data.id);         
-            $('#name').val(data.name);
-            $('#last_name').val(data.last_name);
-            $('#vaccinated').val(data.vaccinated);
-
-            if (data.vaccination_type == null) {
-              $('#vaccine_type').append('<option selected="Selected" Value="Not Vaccinated">Not Vaccinated</option>');
-             // $('#vaccinated').append('<option selected="Selected" Value="No">No</option>');
-            }
-            else{
-              $('#vaccine_type').val(data.vaccination_type);
-            }
-            user_details = data;
-                
-          },
-          error: function(err){
-            console.log(err);
-          }
-        });
-      })
-
-      //function to update users vaccine type and vaccination status
-      function update_user_btn(){
-        user_details.vaccinated= $('#vaccinated').val();
-        user_details.vaccination_type = $('#vaccine_type').val();
-        console.log(user_details);
-
-        $.ajax({
-          url:"http://localhost:6503/api/users/"+user_details.id,
-          method: 'PUT',
-          dataType: 'json',
-            
-          data: user_details,
-          success:function(user_details){
-            console.log(user_details)
-
-            //Success Alert
-            Swal.fire({
-              title: 'User Vacccine Status Successfully Updated!',
-              type: 'success',
-              showConfirmButton: false,
-              timer: 2500
-            });
-          },
-          
-          error: function(err){
-            console.log(err);
-          }
-        });
-      };
-
+     
 
       //Bookings Approval 
       var booking = null;
@@ -241,7 +174,8 @@
         });
       };
       var user_booking = null;
-      //Function to get user's details
+
+      //Function to get user's details for the appointment
       $("#appointment").change(function(){
 
         var booking_id = $("#appointment").val();
@@ -268,13 +202,10 @@
       })
      
       $("#send_approval").click(function(e){
-        
         var email_subject = "NAMDHP Booking"
         var email_body = "Dear: "+user_booking.name +" "+ user_booking.last_name+ "\n" +" , this is to inform you that your booking was approved and is scheduled on the: "+$("#schedule_date").val()+" at UNAM Clinic! Yours faithfully  "+ admin.admin_name+ " "+ admin.admin_lastname + "."
         window.open('mailto:'+user_booking.email+'?subject='+email_subject+'&body='+email_body+'');
       })
-
-      
     </script> 
   </body>
 </html>
