@@ -233,6 +233,7 @@
       $('#vaccination').html(user.vaccination_status)
 
     }
+    
     var vaccine_details = null;
       function load_vaccine(id){
 
@@ -253,6 +254,7 @@
           $('#vaccine_name').html(vaccine_list);     
         });
       };
+      
       //Function to load vaccine details
       $("#vaccine_name").change(function(){
 
@@ -277,6 +279,7 @@
           }
         });
       })
+      
       //Sending an appointment
       $("#sent_appointment").click(function(){    
         var appointment = new Object();
@@ -284,25 +287,53 @@
         appointment.reason = $("#appointment_reason").val();
         appointment.email = user.email;
 
-        $.ajax({
-          url: "http://localhost:6503/api/appointments",
-          method: 'POST',
-          dataType: 'json',
-          data: appointment,
-          success: function(data){
-            console.log(data)
-            swal.fire({
-              type: 'success',
-              title: "Booking Successfully send",
-              showConfirmButton: false,
-              timer: 2500
-            })
-          },
-          error: function (request, status, error) {
-            console.log(request.responseText);
-            console.log("there is a problem");
-          }
-        })
+        var isValid = true;
+        //Check if input text fields are empty
+        
+        $('textarea').each(function() {
+            if ($.trim($(this).val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+                Swal.fire({
+                title : "Appointment reason is empty",
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 8000
+                })
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+        if (isValid==true){   
+
+          $.ajax({
+            url: "http://localhost:6503/api/appointments",
+            method: 'POST',
+            dataType: 'json',
+            data: appointment,
+            success: function(data){
+              console.log(data)
+              swal.fire({
+                type: 'success',
+                title: "Booking Successfully send",
+                showConfirmButton: true,
+                timer: 8000
+              })
+              window.location = "profile.html"  ;
+            },
+            error: function (request, status, error) {
+              console.log(request.responseText);
+              console.log("there is a problem");
+            }
+          })
+        }
       })
 
     //Logout Function
@@ -337,7 +368,7 @@
       let button = document.querySelector(".form button");
       let qrImg = document.querySelector(".qr-img img");
 
-      //on click event for the button
+      //on click event for the button for QR code
       button.addEventListener("click",function(){
 
         //String concatenation contantaining information from the user table

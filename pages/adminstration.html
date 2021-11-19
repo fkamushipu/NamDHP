@@ -58,7 +58,7 @@
                   <h6 class="heading1">Add User Vaccination details</h6>
                   <div class="card-body">
                     <div class="form-group row">
-                      <label for="vaccinated" class="col-md-4 col-form-label text-md-right">Username:</label>
+                      <label for="username" class="col-md-4 col-form-label text-md-right">Username:</label>
                       <select class="col-md-6 form-control" id="username">
                           <optgroup>
                               <option selected="selected" >Select Patient</option>
@@ -263,8 +263,78 @@
 
       //function to update users vaccine type and vaccination status
       function update_user_btn(){
+        var isValid = true;
+        //Check if any user is chosen
+        $('select').each(function() {
+          if ($.trim($('#username').val()) == '') {
+            isValid = false;
+            $(this).css({
+                "border": "1px solid red",
+                "background": "#FFCECE"
+            });
+            Swal.fire({
+            title : "Select a user to be updated",
+            type: 'warning',
+            showConfirmButton: true,
+            timer: 8000
+            })
+          }
+          else {
+            $(this).css({
+                "border": "",
+                "background": ""
+            });
+          }
+        });
         
-        user_details.vaccine_type_id = $('#vaccine_name').val();
+        //Check if vaccine is chosen
+        $('select').each(function() {
+            if ($.trim($('#vaccine_name').val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+                Swal.fire({
+                title : "Select a Vaccine",
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 8000
+                })
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+        
+        //Check if vaccine status is allocated 
+        $('select').each(function() {
+          if ($.trim($('#vaccination_status').val()) == '') {
+              isValid = false;
+              $(this).css({
+                  "border": "1px solid red",
+                  "background": "#FFCECE"
+              });
+              Swal.fire({
+              title : "Choose vaccination Status",
+              type: 'warning',
+              showConfirmButton: true,
+              timer: 8000
+              })
+          }
+          else {
+              $(this).css({
+                  "border": "",
+                  "background": ""
+              });
+          }
+      });
+      
+        if(isValid == true)
+        {user_details.vaccine_type_id = $('#vaccine_name').val();
         user_details.vaccination_status= $('#vaccination_status').val();
           
         console.log(user_details);
@@ -286,10 +356,16 @@
             });
           },
           error: function(err){
+            Swal.fire({
+              title : "Please fill in all the informations",
+              type: 'warning',
+              showConfirmButton: true,
+              timer: 8000
+            })
             console.log(err);
           }
         });
-        
+        }
       };
 
     </script> 
