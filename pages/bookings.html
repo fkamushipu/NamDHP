@@ -126,6 +126,12 @@
 
       //Logout function
       function logout(){
+        swal.fire({
+          type: 'warning',
+          title: "Account Logging out " ,
+          showConfirmButton: true,
+          timer: 7500
+          })
         sessionStorage.clear()
         window.location = "../register.html";
       }
@@ -205,6 +211,7 @@
               timer: 2500
             });
           },
+          
           error: function(err){
             console.log(err);
           }

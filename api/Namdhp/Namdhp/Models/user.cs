@@ -21,10 +21,10 @@ namespace Namdhp.Models
         [StringLength(50)]
         public string username { get; set; }
 
-        [StringLength(50)]
+        [StringLength(500)]
         public string password { get; set; }
 
-        public DateTime? place_of_birth { get; set; }
+        public DateTime? date_of_birth { get; set; }
 
         [StringLength(50)]
         public string gender { get; set; }
@@ -47,16 +47,17 @@ namespace Namdhp.Models
 
         [StringLength(50)]
         public string guardian_contact { get; set; }
+        
+        public int vaccine_type_id { get; set; }
 
-        [StringLength(50)]
-        public string vaccination_type { get; set; }
-
-        public bool? vaccinated { get; set; }
+        public bool? vaccination_status{ get; set; }
 
         [StringLength(50)]
         public string known_allergies { get; set; }
 
         public DateTime? date_created { get; set; }
+
+        public DateTime? date_updated { get; set; }
 
 
     }

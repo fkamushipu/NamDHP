@@ -22,6 +22,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <!--Sweet Alerts Script-->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+        <script src="javascript/forms.js"></script>
         
     </head>
     <body>
@@ -38,13 +39,14 @@
                   <a class="navbar-left" href="#"><img src="images/Nam-DHP3.png"></a>
                 </div>
 
-                <!--Top Navigation lists  of links-->
-                <div class="collapse  navbar-collapse" id="topNavigation">
+                 <!--Top Navigation lists of links -->
+                 <div class="collapse  navbar-collapse" id="topNavigation">
                     <ul class="nav navbar-nav">
-                        <li><a href="../index.html" >Home</a></li>
-                        <li><a href="../about.html">About Us</a></li>
-                        <li><a href="../how.html">How it works?    </a></li>
-                        <li class="active"><a href="register.html">Register / Log In</a></li>
+                        <li><a href="index.html" >Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="how.html">How it works?    </a></li>
+                        <li class="active"><a href="register.html">Register</a></li>
+                        <li><a href="login.html">Login</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="pages/admin.html"><span class="glyphicon glyphicon-log-in"></span> Admin Login</a></li>
@@ -54,14 +56,14 @@
         </nav>
         <div class="container-fluid">    
           <div class="row content"><!--Container with 2 columns -->
-                <div class="col-sm-8"> <!--8 of 12 columns -->
+                <div class="col-sm-10">
 
                     <!--Register Card -->
                     <div class="card mb-3 cardedit">
                         <img src="images/sanitize.JPG" class="card-img-top " alt="Covid Image"><br><br>
                         <div class="card-body">
                             <h5 class="card-title heading5">Register or Sign Up</h5><br>
-                            <p class="card-text">If you already have an existing Nam DHP account, <a onclick="document.getElementById('login').style.display='block'">go to log in!</a>
+                            <p class="card-text">If you already have an existing Nam DHP account, <a href="login.html">go to log in!</a>
                                 By registering to have a Nam DHP account, 
                                 you will have access to your medical health information related to COVID-19.
                                 If you are vaccinated you will have  your proof of vaccination always accessible to you when it's required or requested.</p>
@@ -78,7 +80,7 @@
                                         <div class="form-group row">
                                             <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" required/>
+                                                <input type="text" id="name" class="form-control" name="name" placeholder="Enter your name" required />
                                             </div>
                                         </div>
 
@@ -99,14 +101,23 @@
                                         <div class="form-group row">
                                             <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                             <div class="col-md-6">
-                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" minlength="10" required/>
+                                                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" required />
                                             </div>
+                                            <div id="strengthMessage"></div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="confirm_password" class="col-md-4 col-form-label text-md-right">Re-enter Password</label>
+                                            <div class="col-md-6">
+                                                <input type="password" id="confirm_password" class="form-control" name="confirm_password" placeholder="Re enter Password"  required/>
+                                            </div>
+                                            <div class="registrationFormAlert"  id="CheckPasswordMatch"></div>
+                                            
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="place_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
+                                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">Date Of Birth</label>
                                             <div class="col-md-6">
-                                                <input type="date" id="place_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" required/>
+                                                <input type="date" id="date_of_birth" class="form-control" name="date_of_birth" placeholder="Enter your date of birth" required/>
                                             </div>
                                         </div>
 
@@ -122,23 +133,24 @@
                                         <div class="form-group row">
                                             <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" minlength="10" required >
+                                                <input type="number" id="cellphone" class="form-control" placeholder="Enter phone number" name="cellphone" required >
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                             <div class="col-md-6">
-                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" required />
+                                                <input type="email" id="email" class="form-control" name="email" placeholder="Enter email address" />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="pregnancy_status" class="col-md-4 col-form-label text-md-right">Are You Pregnant?</label>
-                                            <select class="col-md-6 form-control" id="pregnancy_status" required>
+                                            <select class="col-md-6 " id="pregnancy_status">
                                                 <optgroup>
-                                                    <option value="true" >Yes</option>
+                                                    
                                                     <option value="false" >No</option>
+                                                    <option value="true" >Yes</option>
 
                                                 </optgroup>
                                             
@@ -147,16 +159,18 @@
 
                                         <div class="form-group row">
                                             <label for="lactating_status" class="col-md-4 col-form-label text-md-right">Are you breast feeding ?</label>
-                                            <select class="col-md-6 form-control" id="lactating_status" required>
-                                                <optgroup><option value="true">Yes</option>
-                                                    <option value="false">No</option></optgroup>
+                                            <select class="col-md-6 form-control" id="lactating_status" >
+                                                <optgroup>
+                                                    <option value="false">No</option>
+                                                    <option value="true">Yes</option>
+                                                </optgroup>
                                                 
                                             </select>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="marital_status" class="col-md-4 col-form-label text-md-right">Marital Status</label>
-                                            <select class="col-md-6 form-control" id="marital_status" required>
+                                            <select class="col-md-6 form-control" id="marital_status">
                                                 <optgroup>
 
                                             
@@ -173,21 +187,21 @@
                                         <div class="form-group row">
                                             <label for="guardian_name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " required />
+                                                <input type="text" id="guardian_name" class="form-control" name="guardian_name" placeholder="Enter your guardian's name or next of keen " />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="guardian_contact" class="col-md-4 col-form-label text-md-right">Guardian Contact</label>
                                             <div class="col-md-6">
-                                                <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number" required>
+                                                <input type="text" id="guardian_contact" class="form-control" name="guardian_contact" placeholder="Enter your guardian's contact number">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="known_allergies" class="col-md-4 col-form-label text-md-right">Known Allergies </label>
                                             <div class="col-md-6">
-                                                <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " required/>
+                                                <input type="text" id="known_allergies" class="form-control" name="known_allergies" placeholder="Enter known allergies " />
                                             </div>
                                         </div>
 
@@ -200,41 +214,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <!--4 of 12 columns -->
-                  <div class="card mb-3 cardedit">
-                    <img src="images/Covid Info.jpg" class="card-img-top " alt="Covid Image"><br><br>
-                    <div class="card-body">
-                      <h5 class="card-title heading5">Log In</h5><br>
-                      <p class="card-text">If you do not already have an existing Nam DHP account, go to Sign Up!</p>
-                      <button class="btn btn-primary btn-block" id="signin" onclick="document.getElementById('login').style.display='block'">Log In</button>
-                      
-                      <!--Login Modal-->
-                      <div class="login-modal-div " id="login" >
-                        <div class="login" >
-                            <span onclick="document.getElementById('login').style.display='none'" class="close">&times;</span>
-                            <h1 class="heading1 text-center">Log In</h1>
-                            <div class="form-group row">
-                                <label for="username" class=" col-form-label text-md-right"> <i class="fas fa-user"></i> </label>
-                                <div class="col-md-6">
-                                    <input type="text" name="username" placeholder="Username" id="sign_in_username" required />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="password" class=" col-form-label text-md-right"> <i class="fas fa-lock"></i></label>
-                                <div class="col-md-6">
-                                    <input type="password" name="password" placeholder="Password" id="sign_in_password" required />
-                                </div>
-                            </div>
-                            <input class="btn btn-success btn-lg btn-block" type="submit" value="Login" id="sign_in">
-                            <div class="reset">
-                                Forgot password? <a>Click here!</a>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
             </div>
         </div>
@@ -256,39 +235,6 @@
         <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
         
         <script type="text/javascript">
-            //On click of the button with id sign_in, authenticate username and password
-            $("#sign_in").click(function(){
-                $.ajax({
-                    url: "http://localhost:6503/authenticate?username="+$("#sign_in_username").val()+"&password="+$("#sign_in_password").val()+"",
-                    method: 'POST',
-                    dataType: 'json',
-
-                        success: function(data){
-
-                            //If the information is true, store the user details session storage
-                            if (data != undefined) {
-                                console.log(data)
-
-                                //Logged user details are then stored in the session storage
-                                sessionStorage.setItem('user_details', JSON.stringify(data));
-                                window.location = "pages/profile.html" 
-                            }
-
-                            //If the information entered is wrong 
-                            else{
-                                swal.fire({
-                                    title:'Wrong Password or username',
-                                    showConfirmButton: true,
-                                    type: 'error',
-                                    timer: 2500
-                                })
-                            }
-                        },
-                    error: function (request, status, error) {
-                    }
-                })
-            })
-
             // Save User registration on click of the button with id save_user
             $("#save_user").click(function(){
 
@@ -298,7 +244,7 @@
                 user.last_name = $("#last_name").val();
                 user.username = $("#username").val();
                 user.password =$("#password").val();
-                user.place_of_birth =$("#place_of_birth").val();
+                user.date_of_birth =$("#date_of_birth").val();
                 user.gender = $("#gender").val();
                 user.cellphone=$("#cellphone").val();
                 user.email = $("#email").val();
@@ -307,9 +253,136 @@
                 user.marital_status = $("#marital_status").val();
                 user.guardian_name =$("#guardian_name").val();
                 user.guardian_contact =$("#guardian_contact").val();
-                user.known_allergies =$("#known_allergies").val();     
+                user.known_allergies =$("#known_allergies").val();  
                 console.log(user)
 
+                var isValid = true;
+                //Check if input text fields are empty
+                $('input[type="text"]').each(function() {
+                    if ($.trim($(this).val()) == '') {
+                        isValid = false;
+                        $(this).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                        Swal.fire({
+                        title : "Please fill in text information",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                    }
+                    else {
+                        $(this).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                });
+                
+                 //Check if input number fields are empty
+                 $('input[type="number"]').each(function() {
+                    if ($.trim($(this).val()) == '') {
+                        isValid = false;
+                        $(this).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                        Swal.fire({
+                        title : "Please fill in numbers",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                    }
+                    else {
+                        $(this).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                });
+                
+                //Check if input email fields are empty
+                $('input[type="email"]').each(function() {
+                    if ($.trim($(this).val()) == '') {
+                        isValid = false;
+                        $(this).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                        Swal.fire({
+                        title : "Please enter an email address",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                    }
+                    else {
+                        $(this).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                });
+                
+                //Check if input password fields are empty
+                $('input[type="password"]').each(function() {
+                    if ($.trim($(this).val()) == '' || length< 8) {
+                        isValid = false;
+                        $(this).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                        Swal.fire({
+                        title : "Password too short",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                    }
+                    else {
+                        $(this).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                });
+                
+                //Check if input date fields are empty
+                $('input[type="date"]').each(function() {
+                    if ($.trim($(this).val()) == '') {
+                        isValid = false;
+                        $(this).css({
+                            "border": "1px solid red",
+                            "background": "#FFCECE"
+                        });
+                        Swal.fire({
+                        title : "Please enter a date",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                    }
+                    else {
+                        $(this).css({
+                            "border": "",
+                            "background": ""
+                        });
+                    }
+                });
+                
+                //Overall if nothing or unspecified field inputs are not entered 
+                if(isValid == false){
+                    Swal.fire({
+                        title : "Please fill in your information",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                }
+               
+                if (isValid == true) {
                 $.ajax({
                     url: "http://localhost:6503/api/users",
                     method: 'POST',
@@ -318,31 +391,34 @@
 
                     success: function(data){
                         console.log(data)
+
                         // Alert when the user is successfully registered
                         swal.fire({
-                        type: 'success',
-                        title: "Successfully Registered " +  $("#name").val(),
-                        showConfirmButton: false,
-                        timer: 2500
+                            type: 'success',
+                            title: "Successfully Registered " +  $("#name").val(),
+                            showConfirmButton: true,
+                            timer: 8000
                         })
+                        window.location = "register.html" 
 
                         setTimeout(() => {
                         $("#register").hide();  
                         }, 2000);
                         },
                 
-                    error: function (request, status, error) {
+                    error: function (error) {
                         Swal.fire({
-                         title : "Please fill in all the informations",
-                     })
-                    console.log(request.responseText);
+                        title : "Please fill in all the informations",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
                     console.log("There is a problem");
                     }
                 
-                })
-
-            })
-
+                });
+                 }
+            });
         </script>
     </body>
 </html>

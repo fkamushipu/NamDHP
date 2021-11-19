@@ -15,6 +15,7 @@ namespace Namdhp.Models
         public virtual DbSet<appointment> appointments { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<admin> admins { get; set; }
+        public virtual DbSet<Vaccine> Vaccines { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -65,18 +66,15 @@ namespace Namdhp.Models
             modelBuilder.Entity<user>()
                 .Property(e => e.guardian_contact)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.vaccination_type)
-                .IsUnicode(false);
+            
 
             modelBuilder.Entity<user>()
                 .Property(e => e.known_allergies)
                 .IsUnicode(false);
 
             modelBuilder.Entity<admin>()
-    .Property(e => e.admin_name)
-    .IsUnicode(false);
+           .Property(e => e.admin_name)
+           .IsUnicode(false);
 
             modelBuilder.Entity<admin>()
                 .Property(e => e.admin_lastname)
@@ -96,6 +94,23 @@ namespace Namdhp.Models
 
             modelBuilder.Entity<admin>()
                 .Property(e => e.password)
+                .IsUnicode(false);
+
+
+            modelBuilder.Entity<Vaccine>()
+               .Property(e => e.vaccine_name)
+               .IsUnicode(false);
+
+            modelBuilder.Entity<Vaccine>()
+                .Property(e => e.manufacture)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vaccine>()
+                .Property(e => e.side_effects)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Vaccine>()
+                .Property(e => e.general_information)
                 .IsUnicode(false);
 
         }

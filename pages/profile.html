@@ -51,7 +51,7 @@
                     <ul class="nav navbar-nav">
                       <li class="breadcrumb-item active"><a href="adminstration.html">User Profile </a></li>
                       <li class="breadcrumb-item"><a onclick="document.getElementById('booking').style.display='block'">Booking</a></li>
-                     
+                      <li class="breadcrumb-item"><a onclick="document.getElementById('img').style.display='block'">Get QR code</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                       <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -157,7 +157,19 @@
                         <h6 class="mb-0">Vaccine Type</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                          <span id="vaccine_type"></span>
+                        <span id="vaccine_type"></span>
+                      </div>
+                    </div>
+                    <div class="row content">
+                      <div class="">
+                        <div class=" text-secondary">
+                          <button class="btn btn-primary btn-block" id="more_details" onclick="document.getElementById('modal').style.display='block'">Click Here for more details on <span id="vaccine_type"></span> vaccine. </button>
+                          <div class="" style="display: none;" id="modal">
+                            <span onclick="document.getElementById('modal').style.display='none'" class="close">&times;</span>
+                            <div class="vaccine_card" id="vaccine_card">
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <hr>
@@ -174,7 +186,7 @@
 
                           <!--QR code image-->
                           <div class="qr-img">
-                            <img src="">
+                            <img src="" id="img">
                           </div>
                         </div>
                       </div>
@@ -200,13 +212,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
   <!-- Load our React component. -->
-  <script src="app.js"></script>
+  <script src="vaccine.js"></script>
 
   <script type="text/javascript">
     var user = null;
     window.onload = function(){
       user = JSON.parse(sessionStorage.user_details)
-      console.log(user)
+     
       $("#name").html(user.name)
       $("#qr-name").html(user.name)
       $("#last_name").html(user.last_name)
@@ -216,11 +228,55 @@
       $("#cellphone").html(user.cellphone)
       $('#profile-last-name').html(user.last_name)
       $('#profile-name').html(user.name)
-      $('#profile-vaccinated').html(user.vaccinated)
-      $('#vaccine_type').html(user.vaccination_type)
-      $('#vaccination').html(user.vaccinated)
-      
+      $('#profile-vaccinated').html(user.vaccination_status)
+      $('#vaccine_type').html(user.vaccine_type_id)
+      $('#vaccination').html(user.vaccination_status)
+
     }
+    var vaccine_details = null;
+      function load_vaccine(id){
+
+        var vaccine_list='';
+        $.getJSON("http://localhost:6503/api/Vaccines", function(data){
+
+          vaccine_list += '<option value=""> Select '+id+' </option>';
+          data.reverse();
+          $.each(data, function(key,value){
+              if(id != ''){
+                vaccine_list += '<option value="'+value.id+'">' +value.vaccine_name+'</option>';
+              }
+              else{
+                  
+              }
+          });
+
+          $('#vaccine_name').html(vaccine_list);     
+        });
+      };
+      //Function to load vaccine details
+      $("#vaccine_name").change(function(){
+
+        var vaccine_id = $("#vaccine_name").val();
+        $.ajax({
+          url:"http://localhost:6503/api/Vaccines/"+vaccine_id,
+          method: 'GET',
+          dataType: 'json',
+              
+          success:function(data){
+            console.log(data)
+            
+            $('#vaccine_type').val(data.vaccine_type);
+            $('#vaccine_type_id').val(data.vaccine_type_id);
+
+            
+            vaccine_details = data;
+                
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+      })
       //Sending an appointment
       $("#sent_appointment").click(function(){    
         var appointment = new Object();
@@ -251,6 +307,12 @@
 
     //Logout Function
     function logout(){
+      swal.fire({
+        type: 'warning',
+        title: "Account logging out",
+        showConfirmButton: true,
+        timer: 7500
+        })
       sessionStorage.clear()
       window.location = "../register.html";
     }
@@ -263,7 +325,7 @@
       button.addEventListener("click",function(){
 
         //String concatenation contantaining information from the user table
-        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccinated  + "\n" + " Vaccine Type: " + user.vaccination_type;
+        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccination_status  + "\n" + " Vaccine Type: " + user.vaccine_type_id;
         console.log(data)
 
         if(data !== null){
@@ -273,6 +335,7 @@
           qrImg.src = imgSrc;
         }
       })
+
     </script> 
   </body>
 </html>

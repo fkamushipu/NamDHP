@@ -36,6 +36,8 @@
 /*React component */
 .news{
     display:flex;
+	flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 /*List items style*/

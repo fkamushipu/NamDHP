@@ -148,7 +148,42 @@ body{
   padding :14px;
   border-radius: 20px;
 }
-
+.Short {  
+  width: 10%;   
+  margin-top: 5px;  
+  height: 3px;  
+  color: #dc3545;  
+  font-weight: 500;  
+  font-size: 18px;  
+}  
+.Weak {  
+  width: 10%;   
+  margin-top: 5px;  
+  height: 3px;  
+  color: #ffc107;  
+  font-weight: 500;  
+  font-size: 18px;
+}  
+.Good {  
+  width: 10%;  
+  margin-top: 5px;  
+  height: 3px;  
+  color: #28a745;  
+  font-weight: 500;  
+  font-size: 18px;
+}  
+.Strong {  
+  width: 10%;  
+  margin-top: 5px;  
+  height: 3px;  
+  color: #d39e00;  
+  font-weight: 500;  
+  font-size: 18px; 
+}  
+.registrationFormAlert{
+  color:green;
+  width: 10%;
+}
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 .sidenav {
