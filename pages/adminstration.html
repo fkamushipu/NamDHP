@@ -81,7 +81,7 @@
                   
                   <div class="form-group row">
                     <label for="vaccine_name" class="col-md-4 col-form-label text-md-right">Vaccines:</label>
-                    <select class="col-md-6 form-control" id="vaccine_name">
+                    <select class="col-md-6 form-control" id="vaccine_name" name="vaccine_name">
                         <optgroup>
                             <option selected="selected" >Select the Vaccine</option>
                         </optgroup>
@@ -90,7 +90,7 @@
                   </div>
                   <div class="form-group row">
                     <label for="vaccination_status" class="col-md-4 col-form-label text-md-right">Is the patient vaccinated ?</label>
-                    <select class="col-md-6 form-control" id="vaccination_status">
+                    <select class="col-md-6 form-control" id="vaccination_status" name="vaccination_status">
                         <optgroup>
                             <option selected="selected" value="true" >Yes</option>
                             <option value="false" >No</option>
@@ -208,6 +208,7 @@
           $('#vaccine_name').html(vaccine_list);     
         });
       };
+      
       //Function to load vaccine details
       $("#vaccine_name").change(function(){
 
@@ -334,9 +335,10 @@
       });
       
         if(isValid == true)
-        {user_details.vaccine_type_id = $('#vaccine_name').val();
-        user_details.vaccination_status= $('#vaccination_status').val();
-          
+        {
+
+          user_details.vaccine_type_id = $('#vaccine_name').val();
+          user_details.vaccination_status= $('#vaccination_status').val();
         console.log(user_details);
         $.ajax({
           url:"http://localhost:6503/api/users/"+user_details.id,
@@ -368,6 +370,7 @@
         }
       };
 
+    
     </script> 
   </body>
 </html>

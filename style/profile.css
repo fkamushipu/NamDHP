@@ -51,18 +51,6 @@ body{
     margin-top:5px;
   }
 
-  /*QR code container*/
-  .qr-img {
-    margin-top:10px;
-    width:300px;
-    height: 300px;
-  }
-
-  /*QR code image*/
-  .qr-img img {
-    width: 100%;
-    
-  }
 /*Booking Modal Content*/
 .booking{
   background-color: #f1f0f0	;

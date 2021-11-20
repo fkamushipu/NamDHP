@@ -186,8 +186,11 @@ body{
 }
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
-.sidenav {
-  display: none;
-}
-.row.content {height:auto;} 
+  .sidenav {
+    display: none;
+  }
+  .row.content {height:auto;} 
+  .sideProfile{
+    display: none;
+  }
 }
