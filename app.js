@@ -67,10 +67,10 @@ var LikeButton = function (_React$Component) {
         news.map(function (n) {
           return React.createElement(
             'div',
-            { className: 'col-md-4 col-sm-2', key: n._id },
+            { className: 'col-md-6 col-sm-12', key: n._id },
             React.createElement(
               'div',
-              { className: 'card primary-shadow rounded-md  pa-2 ', style: { height: "55rem" } },
+              { className: 'card primary-shadow rounded-md  pa-2 ', style: { height: 'auto'} },
               React.createElement(
                 'div',
                 { className: 'card-body' },

@@ -42,7 +42,7 @@ componentDidMount() {
       <div className= "row">
          {
                 news.map((n) => ( 
-                  <div className="col-md-4"  style={{height: '15vw'}} key = { n._id }>
+                  <div className="col-md-6"   key = { n._id }>
                     <div className="card primary-shadow rounded-md  pa-2 " style={{width: '3rem'}} >
                       <div className="card-body">
                         <h5 className="card-title"><b>{ n.title }</b></h5>

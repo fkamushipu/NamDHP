@@ -58,17 +58,13 @@
           <!--Side Navigation-->
         <div class="col-sm-2 sidenav ">
           <p><a href="#top">Available Vaccines</a></p>
-          <p><a href="#mission">Mission</a></p>
         </div>
 
         <div class="col-sm-9">
             <!--Vaccine Cards List -->
+          <div class="card-header heading1"><span id="vaccine_id_name"></span> Vaccines </div>
           <div class="vaccines_cards " >
-            <div class="card" id="card">
-              <div class="card-header heading1"><span id="vaccine_id_name"></span> vaccine </div>
-              <div id="vaccines">
-
-              </div>
+            <div id="vaccines">
             </div>
           </div>
         </div>
@@ -91,11 +87,12 @@
                // build a div row and append to #vaccine container
               // $('#vaccine_id_name').html(data[i].vaccine_name);
                
-              var row = $('<div></div>');
-               row.append('<span id="vaccine_name">'+ 'Vaccine Name: ' +data[i].vaccine_name +'</span>'+'<br/>');
-               row.append('<span id="manufacture">'+ 'Manufacture: '+data[i].manufacture +'</span>'+'<br/>');
-               row.append('<span id="side_effects">'+ 'Side effects: '+data[i].side_effects +'</span>'+'<br/>');
-               row.append('<span id="general_information">'+ 'General Information: '+data[i].general_information +'</span>'+'<br/>'+'<br/>'+'<br/>'+'<br/>'+'<br/>');
+              var row = $('<div class="card"></div> '+'<br/>');
+              row.append('<span id="vaccine_name" class="card-header heading2">'+'<span>'+data[i].vaccine_name +'</span>'+ ' vaccine' +'</span>' +'<br/>');
+               row.append('<span id="vaccine_name" class="card-title col-md-3 col-sm-12 ">'+ 'Vaccine Name: '+'</span>'+data[i].vaccine_name +'<br/>');
+               row.append('<span id="manufacture" class="card-title  col-md-3 col-sm-12">'+ 'Manufacture: '+'</span>'+data[i].manufacture +'<br/>');
+               row.append('<span id="side_effects" class="card-title  col-md-3 col-sm-12">'+ 'Side effects: '+'</span>'+ '<span class="col-md-7 col-sm-12">' +data[i].side_effects+'</span>' +'<br/>');
+               row.append('<span id="general_information" class="card-title  col-md-3 col-sm-12">'+ 'General Information: '+'</span>'+ '<span class="col-md-7 col-sm-12">'+data[i].general_information+'</span>' +'<br/>'+'<br/>'+'<br/>'+'<br/>'+'<br/>');
                $("#vaccines").append(row);
            }
             
