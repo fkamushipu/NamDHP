@@ -43,7 +43,7 @@
                     <ul class="nav navbar-nav">
                       <li class="breadcrumb-item active"><a href="adminstration.html">Update User </a></li>
                       <li class="breadcrumb-item"><a href="bookings.html">Bookings</a></li>
-                     
+                     <li class="breadcrumb-item "><a href="addvaccine.html">Add Vaccine</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                       <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -221,8 +221,8 @@
           success:function(data){
             console.log(data)
             
-            $('#vaccination_status').val(data.vaccination_status);
-            $('#vaccine_type_id').val(data.vaccine_type_id);
+            $('#vaccination_status').html(data.vaccination_status);
+            $('#vaccine_type_id').html(data.vaccine_type_id);
 
             
             vaccine_details = data;
@@ -338,7 +338,12 @@
         {
 
           user_details.vaccine_type_id = $('#vaccine_name').val();
-          user_details.vaccination_status= $('#vaccination_status').val();
+
+          //on change of the value vaccine-name set vaccination status value to true regardless if no was chosen
+          $('#vaccine_name').on("change", function(){
+          user_details.vaccination_status= $('#vaccination_status').val('true');
+          })
+
         console.log(user_details);
         $.ajax({
           url:"http://localhost:6503/api/users/"+user_details.id,
@@ -354,8 +359,10 @@
               title: 'User Vacccine Status Successfully Updated!',
               type: 'success',
               showConfirmButton: true,
-              timer: 5500
+              timer: 8000
             });
+            sessionStorage.clear()
+            window.location ="adminstration.html"
           },
           error: function(err){
             Swal.fire({
@@ -367,7 +374,8 @@
             console.log(err);
           }
         });
-        }
+        
+       }
       };
 
     

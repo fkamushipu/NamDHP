@@ -43,7 +43,7 @@
                         <ul class="nav navbar-nav">
                           <li class="breadcrumb-item "><a href="adminstration.html">Update User </a></li>
                           <li class="breadcrumb-item active"><a href="bookings.html">Bookings</a></li>
-                         
+                          <li class="breadcrumb-item "><a href="addvaccine.html">Add Vaccine</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                           <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -160,10 +160,11 @@
         $.getJSON("http://localhost:6503/api/appointments", function(data){
 
           booking_list += '<option value=""> Select '+id+' </option>';
+          console.log(data)
           data.reverse();
           $.each(data, function(key,value){
               if(id != ''){
-                booking_list += '<option value="'+value.user_id+'">'+value.reason+'</option>';
+                booking_list += '<option value="'+value.user_id+'">'+ "User "+ value.user_id+" : "+value.reason+'</option>';
               }
               else{
                   

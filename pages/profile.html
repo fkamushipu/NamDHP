@@ -161,15 +161,49 @@
                         <span id="vaccine_name"></span>
                       </div>
                     </div>
-                    <div class="row content">
-                      <div class="">
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-12">
                         <div class=" text-secondary">
-                          <button class="btn btn-primary btn-block" id="more_details" onclick="document.getElementById('modal').style.display='block'">Click Here for more details on <span id="vaccine_type"></span> vaccine. </button>
-                          <div class="" style="display: none;" id="modal">
-                            <span onclick="document.getElementById('modal').style.display='none'" class="close">&times;</span>
-                            <div class="vaccine_card" id="vaccine_card">
-                              <div>
-                                <span id="manufacture"></span>
+                          <div class="form">
+                            <div class="form-element">
+                              <!--Button for showing vaccine details-->
+                              <button class="btn btn-primary btn-block" id="more_details" onclick="document.getElementById('vaccine_information').style.display='block'" >Click Here for more details on <span id="vaccine_type"></span> vaccine. </button>
+                            </div>
+                          </div>
+                          <div  class="col-sm-9 text-secondary" id="vaccine_information" style="display: none;">
+                            <span onclick="document.getElementById('vaccine_information').style.display='none'" class="close">&times;</span>
+                            <h3><span id="vaccine_card_vaccine_name_top" ></span> vaccine details</h3>  
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Vaccine Name: </h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                  <span id="vaccine_card_vaccine_name"></span>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Manufacture: </h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <span id="vaccine_card_manufacture"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">Side Effects: </h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                  <span id="vaccine_card_side_effects"></span>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-3">
+                                <h6 class="mb-0">General Information: </h6>
+                              </div>
+                              <div class="col-sm-9 text-secondary">
+                                  <span id="vaccine_card_general_information"></span>
                               </div>
                             </div>
                           </div>
@@ -183,7 +217,7 @@
                           <div class="form">
                             <div class="form-element">
                               <!--Button for generating QR code-->
-                              <button class="btn btn-success btn-block">Generate QR Code</button>
+                              <button class="btn btn-success btn-block" id="generate_qr">Generate QR Code</button>
                             </div>
                           </div>
                           <!--QR code image-->
@@ -218,9 +252,36 @@
 
   <script type="text/javascript">
     var user = null;
+    var vaccine_id_details=null;
     window.onload = function(){
       user = JSON.parse(sessionStorage.user_details)
       console.log(user)
+      //Get that specific vaccine information
+      
+      vaccine_id_details= user.vaccine_type_id;
+      $.ajax({
+          url:"http://localhost:6503/api/Vaccines/"+vaccine_id_details,
+          method: 'GET',
+          dataType: 'json',
+          success:function(data){
+            console.log(data)
+            
+            $('#vaccine_card_vaccine_name_top').html(data.vaccine_name);
+            $('#vaccine_card_vaccine_name').html(data.vaccine_name);
+            $('#vaccine_card_manufacture').html(data.manufacture);
+            $('#vaccine_card_side_effects').html(data.side_effects);
+            $('#vaccine_card_general_information').html(data.general_information);
+            $('#vaccine_type').html(data.vaccine_name)
+            $('#vaccine_name').html(data.vaccine_name)
+            
+            vaccine_id_details = data;
+                
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+
       $("#name").html(user.name)
       $("#qr-name").html(user.name)
       $("#last_name").html(user.last_name)
@@ -230,12 +291,13 @@
       $("#cellphone").html(user.cellphone)
       $('#profile-last-name').html(user.last_name)
       $('#profile-name').html(user.name)
-      $('#profile-vaccinated').html(user.vaccination_status)
-      $('#vaccine_type').html(user.vaccine_type_id)
+      $('#profile-vaccinated').html(user.vaccination_status) 
       $('#vaccination').html(user.vaccination_status)
+     
 
-    }
-      
+
+       
+      }
     //Sending an appointment
       $("#sent_appointment").click(function(){    
         var appointment = new Object();
@@ -320,14 +382,14 @@
       }
      
       //Selected  button and  the image that will updated 
-      let button = document.querySelector(".form button");
+      let button = document.querySelector("#generate_qr");
       let qrImg = document.querySelector(".qr-img img");
 
       //on click event of the button for QR code
       button.addEventListener("click",function(){
 
         //String concatenation contantaining information from the user table
-        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccination_status  + "\n" + " Vaccine Type: " + user.vaccine_type_id;
+        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccination_status  + "\n" + " Vaccine Type: " + vaccine_id_details.vaccine_name;
         console.log(data)
 
         if(data !== null){
@@ -337,6 +399,7 @@
 
         }
       });
+      
 
     </script> 
   </body>

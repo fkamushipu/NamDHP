@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Digital Health Passport">	
+      <meta name="keywords" content="health, COVID-19, vaccine, vaccination, test">
+      <meta name="author" content="Feni Kamushipu">
+
+      <!--Page title-->
+      <title>Nam DHP</title>
+      <link rel="icon" href="../images/DHP Done.png" type="image/x-icon">
+
+      <!--Bootstrap 3 style-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      
+      <!--Styling Sheets-->
+      <link rel="stylesheet" href="../style/style.css">
+      <link rel="stylesheet" href="../style/profile.css">
+      <link rel="stylesheet" href="../style/register.css">
+
+      <!--Ajax Script-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      
+    
+    </head>
+    <body>
+      <div class="container">
+        <div class="main-body">
+          <nav class= "navbar  navbar-default " id="top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                  <a class="navbar-left" href="#"><img src="../images/Nam-DHP3.png"></a>
+                </div>
+                <div class="collapse  navbar-collapse" id="topNavigation">
+                    <ul class="nav navbar-nav">
+                      <li class="breadcrumb-item "><a href="adminstration.html">Update User </a></li>
+                      <li class="breadcrumb-item"><a href="bookings.html">Bookings</a></li>
+                      <li class="breadcrumb-item active "><a href="addvaccine.html">Add Vaccine</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+          </nav>
+          <div class="container-fluid">
+            <div class="row content">
+              <div class="col-sm-9">
+                <div class="card mb-3" id="AddVaccine">
+                  <h6 class="heading1">Add Vaccine Details</h6>
+                  <div class="card-body">
+                    <div class="form-group row">
+                      <label for="name" class="col-md-4 col-form-label text-md-right">Vaccine Name :</label>
+                      <div class="col-md-6">
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Enter vaccine name" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="manufacture" class="col-md-4 col-form-label text-md-right">Vaccine Manufacture: </label>
+                        <div class="col-md-6">
+                            <input type="text" id="manufacture" class="form-control" name="manufacture" placeholder="Enter vaccine manufacture" required/>
+                        </div>
+                     </div>
+                     <div class="form-group row">
+                        <label for="side_effects" class="col-md-4 col-form-label text-md-right">Side effects :</label>
+                        <div class="col-md-6">
+                          <input type="text" id="side_effects" class="form-control" name="side_effects" placeholder="Enter vaccine side effects" required/>
+                          </div>
+                      </div>
+                        <div class="form-group row">
+                        <label for="general_information" class="col-md-4 col-form-label text-md-right">General Information :</label>
+                        <div class="col-md-6">
+                            <input type="text" id="general_information" class="form-control" name="general_information" placeholder="Enter vaccine general Information" required/>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row">
+                            <button class="btn btn-success btn-lg btn-block" type="submit"  id="add_vaccine">Add Vaccine</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
+    
+    <!--Sweet alerts script-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script> 
+
+    <!--Ajax and jquery Scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> 
+    
+    <!-- Load our React component. -->
+    <script src="app.js"></script>
+
+    <script type="text/javascript">
+
+      //Load the list of users in the user's table
+      var admin=null;
+      window.onload = function(){
+          admin = JSON.parse(sessionStorage.admin_details)
+          console.log(admin)
+      }
+      // Save vaccine registration on click of the button with id add_vaccine
+      $("#add_vaccine").click(function(){
+          //Add vaccine inputs to the corresponding column in the user table
+          var vaccine = new Object();
+                vaccine.vaccine_name = $("#name").val();
+                vaccine.manufacture = $("#manufacture").val();
+                vaccine.side_effects = $("#side_effects").val();
+                vaccine.general_information =$("#general_information").val();
+
+            var isValid = true;
+            //Check if input text fields are empty
+            $('input[type="text"]').each(function() {
+                if ($.trim($(this).val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+                Swal.fire({
+                title : "Enter all the information",
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 8000
+                })
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+            });
+
+            if(isValid == true)
+            {
+                $.ajax({
+                url:"http://localhost:6503/api/Vaccines",
+                method: 'POST',
+                dataType: 'json',
+                data: vaccine,
+
+                success:function(data){
+                    console.log(data);
+
+                    //Success Alert
+                    Swal.fire({
+                    title: 'Vacccine Successfully Added!',
+                    type: 'success',
+                    showConfirmButton: true,
+                    timer: 8000
+                    });
+                    window.location = "addvaccine.html" 
+                    },
+                    error: function(err){
+                        Swal.fire({
+                        title : "Please fill in all the informations",
+                        type: 'warning',
+                        showConfirmButton: true,
+                        timer: 8000
+                        })
+                        console.log(err);
+                    }
+                    });
+                };
+            });
+       //Logout Function
+    function logout(){
+      
+      swal.fire({
+        type: 'warning',
+        title: "Log Out",
+        text: "Are you sure?",
+        showConfirmButton: 'Yes',
+        showCancelButton:'No',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        closeOnConfirm:true,
+        closeOnCancel:true,
+
+        }).then((result) => { 
+          if (result.value===true) { 
+            swal.fire({
+            type: 'warning',
+            title: "Account Logging out " ,
+            showConfirmButton: true,
+            timer: 7500
+          })
+            sessionStorage.clear()
+            window.location = "../index.html";
+          }
+        })
+      }
+     
+
+    
+    </script> 
+  </body>
+</html>

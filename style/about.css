@@ -23,3 +23,7 @@
   hr{
   border-bottom: 1px solid #ffa6a6;
   }
+  #vaccines{
+    display: flex;
+    flex-wrap: wrap;
+  }

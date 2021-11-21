@@ -17,9 +17,7 @@ namespace Namdhp.Models
 
         [StringLength(500)]
         public string side_effects { get; set; }
-
-        [Column(TypeName = "image")]
-        public byte[] image { get; set; }
+        
 
         [StringLength(500)]
         public string general_information { get; set; }

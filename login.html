@@ -45,6 +45,7 @@
                         <li><a href="index.html" >Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="how.html">How it works?    </a></li>
+                        <li><a href="vaccines.html">About Vaccines</a></li>
                         <li><a href="register.html">Register</a></li>
                         <li class="active"><a href="login.html">Login</a></li>
                     </ul>
@@ -118,12 +119,6 @@
                    url: "http://localhost:6503/authenticate?username="+ $("#sign_in_username").val()+"&password="+ $("#sign_in_password").val(),
                     method: 'POST',
                     dataType: 'json',
-                    
-                    beforeSend: function(xhr) {
-                    //May need to use "Authorization" instead
-                    xhr.setRequestHeader("Authentication", "Basic " + btoa(unescape(encodeURIComponent("#sign_in_password")))); 
-                    xhr.setRequestHeader("Authorization", "Basic " + btoa(unescape(encodeURIComponent("#sign_in_password"))));
-                },
                         success: function(data){
                             //If the information is true, store the user details session storage
                             if (data != undefined ) {

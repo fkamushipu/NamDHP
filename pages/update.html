@@ -189,7 +189,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <input class="btn btn-success btn-lg btn-block" type="submit" value="Update Profile"  id="save_user">
+                        <input class="btn btn-success btn-lg btn-block" type="submit" value="Update Profile"  id="update_user">
                     </div>
 
                 </div>
@@ -215,81 +215,121 @@
     var user = null;
     window.onload = function(){
       user = JSON.parse(sessionStorage.user_details)
-     
-      $("#name").html(user.name)
-      $("#qr-name").html(user.name)
-      $("#last_name").html(user.last_name)
-      $("#qr-last-name").html(user.last_name)
-      $("#qr-vaccinated").html(user.vaccinated)
-      $("#email").html(user.email)
-      $("#cellphone").html(user.cellphone)
+      console.log(user)
       $('#profile-last-name').html(user.last_name)
       $('#profile-name').html(user.name)
       $('#profile-vaccinated').html(user.vaccination_status)
-      $('#vaccine_type').html(user.vaccine_type_id)
-      $('#vaccination').html(user.vaccination_status)
-/* 
-      $('#username').html(user.username)
-      $('#cellphone').html(user.cellphone)
-      $('#email').html(user.email)
-      $('#pregnancy_status').html(user.pregnancy_status)
-      $('#lactating_status').html(user.lactating_status)
-      $('#marital_status').html(user.marital_status)
-      $('#guardian_name').html(user.guardian_name)
-      $('#guardian_contact').html(user.guardian_contact)
-      $('#known_allergies').html(user.known_allergies) */
+
     }
-    
-    
-    var vaccine_details = null;
-      function load_vaccine(id){
+    //function to update users profile
 
-        var vaccine_list='';
-        $.getJSON("http://localhost:6503/api/Vaccines", function(data){
+    $('#update_user').click(function(){
+        var isValid = true;
 
-          vaccine_list += '<option value=""> Select '+id+' </option>';
-          data.reverse();
-          $.each(data, function(key,value){
-              if(id != ''){
-                vaccine_list += '<option value="'+value.id+'">' +value.vaccine_name+'</option>';
-              }
-              else{
-                  
-              }
-          });
-
-          $('#vaccine_name').html(vaccine_list);     
-        });
-      };
+        //Check if input text fields are empty
+        $('input[type="text"]').each(function() {
+          if ($.trim($(this).val()) == '') {
+              isValid = false;
+              $(this).css({
+                  "border": "1px solid red",
+                  "background": "#FFCECE"
+              });
+              Swal.fire({
+              title : "Please fill in text information",
+              type: 'warning',
+              showConfirmButton: true,
+              timer: 8000
+              })
+          }
+          else {
+              $(this).css({
+                  "border": "",
+                  "background": ""
+              });
+          }
+      });
       
-      //Function to load vaccine details
-      $("#vaccine_name").change(function(){
-
-        var vaccine_id = $("#vaccine_name").val();
+        //Check if input number fields are empty
+        $('input[type="number"]').each(function() {
+          if ($.trim($(this).val()) == '') {
+              isValid = false;
+              $(this).css({
+                  "border": "1px solid red",
+                  "background": "#FFCECE"
+              });
+              Swal.fire({
+              title : "Please fill in numbers",
+              type: 'warning',
+              showConfirmButton: true,
+              timer: 8000
+              })
+          }
+          else {
+              $(this).css({
+                  "border": "",
+                  "background": ""
+              });
+          }
+      });
+      
+        //Check if input email fields are empty
+        $('input[type="email"]').each(function() {
+            if ($.trim($(this).val()) == '') {
+                isValid = false;
+                $(this).css({
+                    "border": "1px solid red",
+                    "background": "#FFCECE"
+                });
+                Swal.fire({
+                title : "Please enter an email address",
+                type: 'warning',
+                showConfirmButton: true,
+                timer: 8000
+                })
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
+        });
+        
+                  
+        if(isValid == true)
+        {
         $.ajax({
-          url:"http://localhost:6503/api/Vaccines/"+vaccine_id,
-          method: 'GET',
+          url:"http://localhost:6503/api/users/"+user.id,
+          method: 'PUT',
           dataType: 'json',
-              
-          success:function(data){
-            console.log(data)
             
-            $('#vaccine_type').val(data.vaccine_type);
-            $('#vaccine_type_id').val(data.manufacture);
-            $('#vaccine_type_id').val(data.side_effects);
-            $('#vaccine_type_id').val(data.vaccine_type_id);
+          data: user,
+          success:function(user_details){
+            console.log(user_details);
 
-            
-            vaccine_details = data;
-                
+            //Success Alert
+            Swal.fire({
+              title: 'User Profile Successfully Updated!',
+              type: 'success',
+              showConfirmButton: true,
+              timer: 8000
+            });
           },
           error: function(err){
+            Swal.fire({
+              title : "Please fill in all the informations",
+              type: 'warning',
+              showConfirmButton: true,
+              timer: 8000
+            })
             console.log(err);
           }
         });
-      })
-      
-      //Sending an appointment
+        }
+      });
+
+        
+    //Sending an appointment
       $("#sent_appointment").click(function(){    
         var appointment = new Object();
         appointment.user_id = user.id;
@@ -347,7 +387,6 @@
 
     //Logout Function
     function logout(){
-      
       swal.fire({
         type: 'warning',
         title: "Log Out",
@@ -372,25 +411,7 @@
           }
         })
       }
-     
-      //Selected  button and  the image that will updated 
-      let button = document.querySelector(".form button");
-      let qrImg = document.querySelector(".qr-img img");
-
-      //on click event for the button for QR code
-      button.addEventListener("click",function(){
-
-        //String concatenation contantaining information from the user table
-        let data = "Vaccination Card => " + "\n" + "Name: "+ user.name + " \n " + " Last Name: "+  user.last_name + "\n" + " Vaccinated: "+ user.vaccination_status  + "\n" + " Vaccine Type: " + user.vaccine_type_id;
-        console.log(data)
-
-        if(data !== null){
-
-          //QR code generator API
-          let imgSrc = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="+data;
-          qrImg.src = imgSrc;
-        }
-      })
+    
     </script> 
   </body>
 </html>
