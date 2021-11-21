@@ -19,13 +19,13 @@ namespace Namdhp.Controllers
         [Route("authenticate_admin")]
         public IHttpActionResult auth(string username, string password)
         {
-            var user_name = db.admins.Where(r => r.username == username).FirstOrDefault();
-            var pass_word = db.admins.Where(p => p.password == password).FirstOrDefault();
+            var user_name = db.admins.Where(r => r.username == username && r.password == password).FirstOrDefault();
+            //var pass_word = db.admins.Where(p => p.password == password).FirstOrDefault();
 
 
-            if (user_name != null && pass_word != null)
+            if (user_name != null)
             {
-                return Ok(pass_word);
+                return Ok(user_name);
             }
 
             return StatusCode(HttpStatusCode.NoContent);

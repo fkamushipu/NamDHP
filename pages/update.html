@@ -52,7 +52,7 @@
                         <li class="breadcrumb-item"><a href="profile.html">User Profile </a></li>
                         <li class="breadcrumb-item active"><a href="update.html">Update Profile </a></li>
                         <li class="breadcrumb-item"><a onclick="document.getElementById('booking').style.display='block'">Booking</a></li>
-                        <li class="breadcrumb-item"><a onclick="document.getElementById('img').style.display='block'">Get QR code</a></li>
+                        <li class="breadcrumb-item"><a href="profile.html#generate">Get QR code</a></li>
                       </ul>
                     <ul class="nav navbar-nav navbar-right">
                       <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -105,14 +105,6 @@
               <div class="col-sm-8">
                 <h1 class="heading1 text-center">Update Profile</h1>
                 <div class="card-body">
-
-                    <div class="form-group row">
-                        <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
-                        <div class="col-md-6">
-                            <input type="text" id="username" class="form-control" name="username" placeholder="Enter your username" required/>
-                        </div>
-                    </div>
-
                     <div class="form-group row">
                         <label for="cellphone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                         <div class="col-md-6">
@@ -220,9 +212,20 @@
       $('#profile-name').html(user.name)
       $('#profile-vaccinated').html(user.vaccination_status)
 
-    }
-    //function to update users profile
+             $('#cellphone').val(user.cellphone);
+             $('#email').val( user.email);
+             $('#pregnancy_status').val( user.pregnancy_status);
+             $('#lactating_status').val( user.lactating_status);
+             $('#marital_status').val(  user.marital_status);
+             $('#guardian_name').val( user.guardian_name);
+            $('#guardian_contact').val( user.guardian_contact);
+            $('#known_allergies').val( user.known_allergies);
 
+    }
+ 
+    
+
+    //function to update users profile
     $('#update_user').click(function(){
         var isValid = true;
 
@@ -298,15 +301,24 @@
                   
         if(isValid == true)
         {
+          user.cellphone = $('#cellphone').val();
+          user.email = $('#email').val();
+          user.pregnancy_status = $('#pregnancy_status').val();
+          user.lactating_status = $('#lactating_status').val();
+          user.marital_status = $('#marital_status').val();
+          user.guardian_name = $('#guardian_name').val();
+          user.guardian_contact = $('#guardian_contact').val();
+          user.known_allergies = $('#known_allergies').val();
+
         $.ajax({
           url:"http://localhost:6503/api/users/"+user.id,
           method: 'PUT',
           dataType: 'json',
             
           data: user,
-          success:function(user_details){
-            console.log(user_details);
-
+          success:function(data){
+            console.log(user);
+            sessionStorage.setItem('user_details', JSON.stringify(user));
             //Success Alert
             Swal.fire({
               title: 'User Profile Successfully Updated!',
@@ -314,6 +326,9 @@
               showConfirmButton: true,
               timer: 8000
             });
+         
+           
+          //  window.location = "update.html"
           },
           error: function(err){
             Swal.fire({

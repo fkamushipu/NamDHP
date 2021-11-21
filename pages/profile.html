@@ -52,7 +52,7 @@
                       <li class="breadcrumb-item active"><a href="profile.html">User Profile </a></li>
                       <li class="breadcrumb-item"><a href="update.html">Update Profile </a></li>
                       <li class="breadcrumb-item"><a onclick="document.getElementById('booking').style.display='block'">Booking</a></li>
-                      <li class="breadcrumb-item"><a id="qrcode-dwnld-btn">Get QR code</a></li>
+                      <li class="breadcrumb-item"><a href="#generate">Get QR code</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                       <li><a onclick="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
@@ -213,7 +213,7 @@
                     <hr>
                     <div class="row">
                       <div class="col-sm-12">
-                        <div class="center">
+                        <div class="center" id="generate">
                           <div class="form">
                             <div class="form-element">
                               <!--Button for generating QR code-->
@@ -221,7 +221,7 @@
                             </div>
                           </div>
                           <!--QR code image-->
-                          <div class="qr-img">
+                          <div class="qr-img" >
                             <img src="" id="img">
                           </div>
                         </div>

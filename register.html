@@ -328,14 +328,14 @@
                 
                 //Check if input password fields are empty
                 $('input[type="password"]').each(function() {
-                    if ($.trim($(this).val()) == '' || length< 8) {
+                    if ($.trim($(this).val()) == '' || $(this).val().length < 6) {
                         isValid = false;
                         $(this).css({
                             "border": "1px solid red",
                             "background": "#FFCECE"
                         });
                         Swal.fire({
-                        title : "Password too short",
+                        title : "Password too short, must contain atleast 6 characters",
                         type: 'warning',
                         showConfirmButton: true,
                         timer: 8000
@@ -371,17 +371,7 @@
                         });
                     }
                 });
-                
-                //Overall if nothing or unspecified field inputs are not entered 
-                if(isValid == false){
-                    Swal.fire({
-                        title : "Please fill in your information",
-                        type: 'warning',
-                        showConfirmButton: true,
-                        timer: 8000
-                        })
-                }
-               
+
                 if (isValid == true) {
                 $.ajax({
                     url: "http://localhost:6503/api/users",
@@ -408,11 +398,12 @@
                 
                     error: function (error) {
                         Swal.fire({
-                        title : "Please fill in all the informations",
+                        title : "Username already exists",
                         type: 'warning',
                         showConfirmButton: true,
                         timer: 8000
                         })
+                        console.log(error)
                     console.log("There is a problem");
                     }
                 

@@ -28,13 +28,13 @@ namespace Namdhp.Controllers
         [Route("authenticate")]
         public IHttpActionResult auth(string username, string password)
         {
-            var user_name = db.users.Where(r => r.username == username).FirstOrDefault();
-            var pass_word = db.users.Where(p => p.password == password).FirstOrDefault();
+            var user_name = db.users.Where(r => r.username == username && r.password == password).FirstOrDefault();
+          //  var pass_word = db.users.Where(p => p.password == password).FirstOrDefault();
 
           
-            if (user_name != null && pass_word != null)
+            if (user_name != null)
             {
-                return Ok(pass_word);
+                return Ok(user_name);
             }
 
            return StatusCode(HttpStatusCode.NoContent) ;
@@ -97,8 +97,16 @@ namespace Namdhp.Controllers
             {
                 return BadRequest(ModelState);
             }
+            List<user> user_user = db.users
+                       .SqlQuery("Select * from users")
+                       .Where(u => u.username == user.username ).ToList<user>();
+            if(user_user != null)
+            {
+                return (null);
+            }
 
             db.users.Add(user);
+
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = user.id }, user);

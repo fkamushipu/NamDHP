@@ -339,10 +339,9 @@
 
           user_details.vaccine_type_id = $('#vaccine_name').val();
 
-          //on change of the value vaccine-name set vaccination status value to true regardless if no was chosen
-          $('#vaccine_name').on("change", function(){
-          user_details.vaccination_status= $('#vaccination_status').val('true');
-          })
+         
+          user_details.vaccination_status= $('#vaccination_status').val();
+          
 
         console.log(user_details);
         $.ajax({
@@ -361,7 +360,6 @@
               showConfirmButton: true,
               timer: 8000
             });
-            sessionStorage.clear()
             window.location ="adminstration.html"
           },
           error: function(err){
