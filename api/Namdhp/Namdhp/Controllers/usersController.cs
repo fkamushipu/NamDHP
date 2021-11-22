@@ -97,19 +97,22 @@ namespace Namdhp.Controllers
             {
                 return BadRequest(ModelState);
             }
-            List<user> user_user = db.users
-                       .SqlQuery("Select * from users")
-                       .Where(u => u.username == user.username ).ToList<user>();
-            if(user_user != null)
+            try
             {
+
+                db.users.Add(user);
+
+                db.SaveChanges();
+
+                return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
+
+            }
+            catch (Exception e)
+            {
+                // throw e;
                 return (null);
             }
 
-            db.users.Add(user);
-
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = user.id }, user);
         }
 
         // DELETE: api/users/5

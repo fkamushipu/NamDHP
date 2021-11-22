@@ -125,7 +125,6 @@ C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Web.WebP
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\System.Web.WebPages.Razor.xml
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\Antlr3.Runtime.pdb
-C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\obj\Debug\Namdhp.csprojResolveAssemblyReference.cache
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\obj\Debug\Namdhp.dll
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\obj\Debug\Namdhp.pdb
 C:\Users\Hp user 2nd\Desktop\NamDHP\NamDHP\api\Namdhp\Namdhp\bin\Microsoft.AspNetCore.Cors.dll
